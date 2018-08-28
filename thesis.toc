@@ -1,0 +1,34 @@
+\contentsline {section}{\numberline {1}Introduction}{3}
+\contentsline {section}{\numberline {2}Related Works}{4}
+\contentsline {subsection}{\numberline {2.1}MAPO}{6}
+\contentsline {subsection}{\numberline {2.2}UP-Miner}{6}
+\contentsline {subsection}{\numberline {2.3}CLAMS}{7}
+\contentsline {subsection}{\numberline {2.4}APIrec}{9}
+\contentsline {subsection}{\numberline {2.5}Buse-Weimer algorithm}{10}
+\contentsline {subsection}{\numberline {2.6}APIMiner}{12}
+\contentsline {subsection}{\numberline {2.7}JSS approach}{12}
+\contentsline {subsection}{\numberline {2.8}Jira extension}{13}
+\contentsline {subsection}{\numberline {2.9}CodeBroker}{14}
+\contentsline {subsection}{\numberline {2.10}Usetec}{16}
+\contentsline {subsection}{\numberline {2.11}PAM}{17}
+\contentsline {section}{\numberline {3}Problem statement}{19}
+\contentsline {subsection}{\numberline {3.1}Recommendation in complex software system}{20}
+\contentsline {subsection}{\numberline {3.2}Learning API: issues and solutions}{21}
+\contentsline {subsection}{\numberline {3.3}Concept of Pattern}{24}
+\contentsline {section}{\numberline {4}Through the code cloning}{25}
+\contentsline {subsection}{\numberline {4.1}Code cloning taxonomy}{25}
+\contentsline {subsection}{\numberline {4.2}Code cloners: techniques and features}{27}
+\contentsline {subsection}{\numberline {4.3}Simian overview}{29}
+\contentsline {section}{\numberline {5}Proposed approach}{31}
+\contentsline {subsection}{\numberline {5.1}Overview}{31}
+\contentsline {subsection}{\numberline {5.2}Preprocessing}{32}
+\contentsline {subsection}{\numberline {5.3}Simian within Eclipse platform}{33}
+\contentsline {subsection}{\numberline {5.4}CLAMS adaptation}{35}
+\contentsline {subsection}{\numberline {5.5}API recommendations}{36}
+\contentsline {section}{\numberline {6}Validation}{40}
+\contentsline {subsection}{\numberline {6.1}Dataset}{41}
+\contentsline {subsection}{\numberline {6.2}Rascal setup}{41}
+\contentsline {subsection}{\numberline {6.3}Metrics}{43}
+\contentsline {section}{\numberline {7}Conclusion}{44}
+\contentsline {section}{References}{46}
+\contentsline {section}{\numberline {8}References}{46}
