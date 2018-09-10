@@ -1,0 +1,3 @@
+Optional[{
+    from("activemq:queue:test.queue").to("stream:out");
+}]

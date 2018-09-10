@@ -1,0 +1,25 @@
+package org.univaq.simia.tests;
+
+import java.io.IOException;
+
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.TransformerException;
+
+import org.univaq.simian.evaluation.RascalStructure;
+import org.xml.sax.SAXException;
+
+public class TestValidation {
+
+	public static void main(String[] args) throws ParserConfigurationException, SAXException, IOException, TransformerException {
+		// TODO Auto-generated method stub
+		RascalStructure rsc=new RascalStructure();
+		//rsc.buildStructure("C:\\Users\\claudio\\Desktop\\twitte4j");
+		
+		//rsc.appendLibraries("C:\\Users\\claudio\\Desktop\\twitte4j\\.classpath", "twitter4j-core-4.0.7.jar");		
+		
+		
+		//rsc.applyMetrics("C:\\Users\\claudio\\Desktop\\validation_framework\\gt_methods.txt", "C:\\Users\\claudio\\Desktop\\validation_framework\\patterns_methods.txt");
+	}
+	
+
+}

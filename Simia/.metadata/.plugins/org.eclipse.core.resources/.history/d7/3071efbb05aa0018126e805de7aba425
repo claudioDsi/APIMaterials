@@ -1,0 +1,120 @@
+import org.eclipse.paho.client.mqttv3.IMqttDeliveryToken;
+import org.eclipse.paho.client.mqttv3.MqttCallback;
+import org.eclipse.paho.client.mqttv3.MqttClient;
+import org.eclipse.paho.client.mqttv3.MqttConnectOptions;
+import org.eclipse.paho.client.mqttv3.MqttException;
+import org.eclipse.paho.client.mqttv3.MqttMessage;
+import org.eclipse.paho.client.mqttv3.persist.MqttDefaultFilePersistence;
+Optional[{
+    // Default settings:
+    boolean quietMode = false;
+    String action = "publish";
+    String topic = "";
+    String message = "Message from blocking MQTTv3 Java client sample";
+    int qos = 2;
+    String broker = "m2m.eclipse.org";
+    int port = 1883;
+    String clientId = null;
+    String subTopic = "Sample/#";
+    String pubTopic = "Sample/Java/v3";
+    // Non durable subscriptions
+    boolean cleanSession = true;
+    boolean ssl = false;
+    String password = null;
+    String userName = null;
+    // Parse the arguments -
+    for (int i = 0; i < args.length; i++) {
+        // Check this is a valid argument
+        if (args[i].length() == 2 && args[i].startsWith("-")) {
+            char arg = args[i].charAt(1);
+            // Handle arguments that take no-value
+            switch(arg) {
+                case 'h':
+                case '?':
+                    printHelp();
+                    return;
+                case 'q':
+                    quietMode = true;
+                    continue;
+            }
+            // ensure one is specified
+            if (i == args.length - 1 || args[i + 1].charAt(0) == '-') {
+                System.out.println("Missing value for argument: " + args[i]);
+                printHelp();
+                return;
+            }
+            switch(arg) {
+                case 'a':
+                    action = args[++i];
+                    break;
+                case 't':
+                    topic = args[++i];
+                    break;
+                case 'm':
+                    message = args[++i];
+                    break;
+                case 's':
+                    qos = Integer.parseInt(args[++i]);
+                    break;
+                case 'b':
+                    broker = args[++i];
+                    break;
+                case 'p':
+                    port = Integer.parseInt(args[++i]);
+                    break;
+                case 'i':
+                    clientId = args[++i];
+                    break;
+                case 'c':
+                    cleanSession = Boolean.valueOf(args[++i]).booleanValue();
+                    break;
+                case 'k':
+                    System.getProperties().put("javax.net.ssl.keyStore", args[++i]);
+                    break;
+                case 'w':
+                    System.getProperties().put("javax.net.ssl.keyStorePassword", args[++i]);
+                    break;
+                case 'r':
+                    System.getProperties().put("javax.net.ssl.trustStore", args[++i]);
+                    break;
+                case 'v':
+                    ssl = Boolean.valueOf(args[++i]).booleanValue();
+                    break;
+                case 'u':
+                    userName = args[++i];
+                    break;
+                case 'z':
+                    password = args[++i];
+                    break;
+                default:
+                    System.out.println("Unrecognised argument: " + args[i]);
+                    printHelp();
+                    return;
+            }
+        } else {
+            System.out.println("Unrecognised argument: " + args[i]);
+            printHelp();
+            return;
+        }
+    }
+    // Validate the provided arguments
+    if (!action.equals("publish") && !action.equals("subscribe")) {
+        System.out.println("Invalid action: " + action);
+        printHelp();
+        return;
+    }
+    if (qos < 0 || qos > 2) {
+        System.out.println("Invalid QoS: " + qos);
+        printHelp();
+        return;
+    }
+    if (topic.equals("")) {
+        // Set the default topic according to the specified action
+        if (action.equals("publish")) {
+            topic = pubTopic;
+        } else {
+            topic = subTopic;
+        }
+    }
+    String protocol = "tcp://";
+    if (ssl) {

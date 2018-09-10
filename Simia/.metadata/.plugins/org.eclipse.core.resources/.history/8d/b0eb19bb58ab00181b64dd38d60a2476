@@ -1,0 +1,381 @@
+{
+    String correlationID;
+    String groupID;
+    boolean useReplyToHeader;
+    Object expectedBody;
+    String replyQueueName;
+    String messageType;
+    MockEndpoint resultEndpoint;
+    Exchange exchange;
+    resultEndpoint.expectedBodiesReceived(expectedBody);
+    AssertionClause firstMessage = resultEndpoint.message(number);
+    firstMessage.header(string).isEqualTo(number);
+    firstMessage.header(string).isEqualTo(correlationID);
+    if (useReplyToHeader) {
+        firstMessage.header(string).isEqualTo(ActiveMQConverter.toDestination(replyQueueName));
+    }
+    firstMessage.header(string).isEqualTo(messageType);
+    firstMessage.header(string).isEqualTo(groupID);
+
+    resultEndpoint.assertIsSatisfied();
+
+    List<Exchange> list = resultEndpoint.getReceivedExchanges();
+    Message in = exchange.getIn();
+    Object replyTo = in.getHeader(string);
+    // Do something with list
+
+    // Do something with replyTo
+}
+
+ file name 110.java
+
+ duplicated lines 14
+{
+    ProducerTemplate deployTemplate;
+    final String path;
+    ProducerTemplate undeployTemplate;
+    MockEndpoint undeployResult;
+    MockEndpoint deployResult;
+    deployResult.expectedMessageCount(number);
+    deployResult.expectedPropertyReceived(string, path);
+    deployTemplate.sendBody(path);
+    deployResult.assertIsSatisfied();
+    undeployResult.expectedMessageCount(number);
+    undeployResult.expectedPropertyReceived(string, path);
+    undeployTemplate.sendBody(path);
+    undeployResult.assertIsSatisfied();
+}
+
+ file name 123.java
+
+ duplicated lines 14
+{
+    final Exchange newExchange;
+    final Exchange oldExchange;
+    final Message oldMessage = oldExchange.getIn();
+    final Message newMessage = newExchange.getIn();
+
+    final Double oldRate = oldMessage.getHeader(Constants.PROPERTY_RATE,
+    Double.class);
+    final Double newRate = newMessage.getHeader(Constants.PROPERTY_RATE,
+    Double.class);
+    // Do something with oldRate
+
+    // Do something with newRate
+}
+
+ file name 125.java
+
+ duplicated lines 10
+{
+    CamelContext consumerContext1;
+    CamelContext consumerContext2;
+    MockEndpoint result1Endpoint;
+    MockEndpoint result2Endpoint;
+    ProducerTemplate template;
+    CamelContext producerContext;
+    producerContext = new DefaultCamelContext();
+    template = producerContext.createProducerTemplate();
+
+    consumerContext1 = new DefaultCamelContext();
+    consumerContext1.addRoutes(new RouteBuilder() {
+        // Do something
+    });
+    consumerContext2 = new DefaultCamelContext();
+    consumerContext2.addRoutes(new RouteBuilder() {
+        // Do something
+    });
+
+    ServiceHelper.startServices(producerContext);
+
+    result1Endpoint = consumerContext1.getEndpoint(string, MockEndpoint.class);
+    result2Endpoint = consumerContext2.getEndpoint(string, MockEndpoint.class);
+    // Do something with template
+
+    // Do something with result1Endpoint
+
+    // Do something with result2Endpoint
+
+}
+
+ file name 136.java
+
+ duplicated lines 12
+{
+    Message message;
+    final Scope[] IN_OUT;
+    Context context;
+    Object value;
+    String name;
+    Exchange exchange = message.getExchange();
+    for (Scope scope : IN_OUT) {
+        for (Property property : context.getProperties(scope)) {
+            if (matches(name)) {
+                if (value != null) {
+                    message.setHeader(name, value);
+                }
+            }
+        }
+    }
+    if (exchange != null) {
+        for (Property property : context.getProperties(EXCHANGE)) {
+            if (matches(name)) {
+                if (value != null) {
+                    exchange.setProperty(name, value);
+                }
+            }
+        }
+    }
+}
+
+ file name 138.java
+
+ duplicated lines 10
+{
+
+    CamelContext camelContext;
+    JmsComponent jmsComponent;
+    camelContext = new DefaultCamelContext();
+    camelContext.addComponent(string, jmsComponent);
+
+    try {
+        camelContext.addRoutes(new RouteBuilder() {
+            // Do something
+        });
+
+        camelContext.addRoutes(new RouteBuilder() {
+            // Do something
+        });
+
+    } catch (Exception e) {
+        // Do something
+    }
+
+}
+
+ file name 142.java
+
+ duplicated lines 10
+{
+    Exchange newExchange;
+    Exchange answer;
+    Exchange oldExchange;
+    if (oldExchange == null) {
+        answer = new DefaultExchange(newExchange);
+        answer.getIn().setBody(new ArrayList<Object>());
+    }
+    @SuppressWarnings(string)
+    List<Object> list = (List<Object>)answer.getIn().getBody();
+    list.add(newExchange.getIn().getBody());
+}
+
+ file name 17.java
+
+ duplicated lines 10
+{
+    MockEndpoint queueOne;
+    MockEndpoint error;
+    MockEndpoint queueTwo;
+    queueOne.expectedMessageCount(number);
+
+    queueTwo.expectedMessageCount(number);
+
+    error.expectedMessageCount(number);
+
+    queueOne.assertIsSatisfied();
+    queueTwo.assertIsSatisfied();
+    error.assertIsSatisfied();
+}
+
+ file name 27.java
+
+ duplicated lines 18
+{
+
+    int offset;
+    CamelContext context;
+    ICallback callback;
+    boolean facets;
+    int rows;
+    String search;
+    Exchange exchange = new DefaultExchange(context, ExchangePattern.InOut);
+    exchange.getIn().setHeader(SolrOptions.query, search);
+    exchange.getIn().setHeader(SolrOptions.stream, callback);
+    exchange.getIn().setHeader(SolrOptions.facets, facets);
+    exchange.getIn().setHeader(SolrOptions.offset, offset);
+    exchange.getIn().setHeader(SolrOptions.rows, rows);
+    context.createProducerTemplate().send(string, exchange);
+
+    return (ResultSet) exchange.getOut().getBody();
+}
+
+ file name 55.java
+
+ duplicated lines 14
+{
+    final Class<?> toType;
+    final Class<?>[] parameterTypes;
+    final Method method;
+    final Class<?> type;
+    final int modifiers;
+    final boolean hasCorrectParameters = (parameterTypes != null)
+    && ((parameterTypes.length == number) || ((parameterTypes.length == number) && Exchange.class
+    .isAssignableFrom(parameterTypes[number])));
+    if (!hasCorrectParameters) {
+        throw new IllegalArgumentException(
+            string
+            + method
+            + string
+            + type.getName()
+            + string
+            + string
+            + Exchange.class.getName() + string);
+    }
+
+    if (isAbstract(modifiers) || !isPublic(modifiers)) {
+        throw new IllegalArgumentException(
+            string
+            + method
+            + string
+            + type.getName()
+            + string);
+    }
+
+    if (toType.equals(Void.class)) {
+        throw new IllegalArgumentException(string
+        + method + string + type.getName()
+        + string);
+    }
+}
+
+ file name 69.java
+
+ duplicated lines 18
+{
+    MockEndpoint mock;
+    MockEndpoint error;
+    ProducerTemplate producerTemplate;
+    mock.expectedMessageCount(number);
+    error.expectedMessageCount(number);
+    Exchange result = producerTemplate.send(string, createExchange(string));
+    mock.assertIsSatisfied();
+    error.assertIsSatisfied();
+    mock.reset();
+    error.reset();
+    mock.expectedMessageCount(number);
+    error.expectedMessageCount(number);
+    mock.assertIsSatisfied();
+    error.assertIsSatisfied();
+    // Do something with result
+
+}
+
+ file name 71.java
+
+ duplicated lines 14
+{
+    MockEndpoint mock;
+    final int COUNT;
+    final DirectEndpoint de = new DirectEndpoint();
+    de.setCamelContext(context);
+    de.setEndpointUriIfNotSpecified(string);
+
+    final DirectEndpoint de2 = new DirectEndpoint();
+    de2.setCamelContext(context);
+    de2.setEndpointUriIfNotSpecified(string);
+
+    context.addRoutes(new RouteBuilder() {
+        // Do something
+    });
+    mock.expectedMessageCount(COUNT);
+}
+
+ file name 72.java
+
+ duplicated lines 12
+{
+    MockEndpoint mock1;
+    MockEndpoint mock2;
+    ProducerTemplate producerTemplate;
+    mock1.expectedBodiesReceived(string);
+    mock2.expectedBodiesReceived(string);
+    Exchange result = (Exchange)producerTemplate.send(string,
+    createMessage(string).getExchange());
+    mock1.assertIsSatisfied();
+    mock2.assertIsSatisfied();
+    assertEquals(SplitHistory.parse(string),
+    new PlatformMessage(mock1.getExchanges().get(number)).getSplitHistory());
+    assertEquals(SplitHistory.parse(string),
+    new PlatformMessage(mock2.getExchanges().get(number)).getSplitHistory());
+    // Do something with result
+}
+
+ file name 74.java
+
+ duplicated lines 10
+{
+
+    Exchange exchange;
+    boolean valid;
+    String message;
+    if (exchange.getIn().getHeaders().containsKey(string) == boolean || exchange.getIn().getHeader(string).equals(string) == boolean) {
+        // Do something
+    }
+    if (exchange.getIn().getHeaders().containsKey(string) == boolean || exchange.getIn().getHeader(string).equals(string) == boolean) {
+        // Do something
+    }
+    if (exchange.getIn().getHeaders().containsKey(string) == boolean || exchange.getIn().getHeader(string).equals(string) == boolean) {
+        // Do something
+    }
+
+    if (valid == boolean) {
+        exchange.getOut().setBody(message);
+    }
+
+    exchange.getIn().getHeaders().put(string, valid);
+
+}
+
+ file name 76.java
+
+ duplicated lines 10
+{
+    String correlationID;
+    Object expectedBody;
+    String messageType;
+    ActiveMQQueue replyQueue;
+    MockEndpoint resultEndpoint;
+    Exchange exchange;
+    resultEndpoint.expectedBodiesReceived(expectedBody);
+    AssertionClause firstMessageExpectations = resultEndpoint.message(number);
+    firstMessageExpectations.header(string).isEqualTo(number);
+    firstMessageExpectations.header(string).isEqualTo(replyQueue);
+    firstMessageExpectations.header(string).isEqualTo(correlationID);
+    firstMessageExpectations.header(string).isEqualTo(messageType);
+
+    resultEndpoint.assertIsSatisfied();
+
+    List<Exchange> list = resultEndpoint.getReceivedExchanges();
+    Object replyTo = exchange.getIn().getHeader(string);
+    // Do something with list
+
+    // Do something with replyTo
+}
+
+ file name 77.java
+
+ duplicated lines 12
+{
+    final Source CONTENT;
+    Message from = new DefaultMessage();
+    from.setBody(CONTENT);
+    from.setHeader(string, string);
+    from.setHeader(string, string);
+    from.setHeader(string, string);
+}
+
+ file name 80.java
+
+ duplicated lines 10
+
+ total time 29

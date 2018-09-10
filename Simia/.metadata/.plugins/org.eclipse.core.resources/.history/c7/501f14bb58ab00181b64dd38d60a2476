@@ -1,0 +1,9 @@
+import org.apache.camel.Exchange;
+import org.apache.camel.Message;
+import org.apache.camel.builder.RouteBuilder;
+import org.apache.camel.main.Main;
+Optional[{
+    Main main = new Main();
+    main.addRouteBuilder(new MyRouteBuilder());
+    main.run(args);
+}]

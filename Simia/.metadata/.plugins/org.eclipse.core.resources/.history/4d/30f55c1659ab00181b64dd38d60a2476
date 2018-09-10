@@ -1,0 +1,7 @@
+import org.apache.camel.Exchange;
+import org.apache.camel.Message;
+import org.apache.camel.builder.RouteBuilder;
+import org.apache.camel.main.Main;
+Optional[{
+    return e.getProperty(Exchange.TIMER_FIRED_TIME, Date.class).getTime();
+}]
