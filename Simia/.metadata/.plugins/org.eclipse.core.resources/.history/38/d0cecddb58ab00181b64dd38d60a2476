@@ -1,7 +1,0 @@
-import org.apache.camel.Exchange;
-import org.apache.camel.Message;
-import org.apache.camel.builder.RouteBuilder;
-import org.apache.camel.main.Main;
-Optional[{
-    from("timer:simple?period=503").id("simple-route").transform().exchange(this::dateToTime).process().message(this::log).process().body(this::log).choice().when().body(Integer.class, b -> (b & 1) == 0).log("Received even number").when().body(Integer.class, (b, h) -> h.containsKey("skip") ? false : (b & 1) == 0).log("Received odd number").when().body(Objects::isNull).log("Received null body").when().body(Integer.class, b -> (b & 1) != 0).log("Received odd number").endChoice();
-}]

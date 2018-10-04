@@ -1,0 +1,33 @@
+\contentsline {section}{\numberline {1}Introduction}{3}
+\contentsline {section}{\numberline {2}Context definition}{6}
+\contentsline {subsection}{\numberline {2.1}Recommendation in complex software system}{6}
+\contentsline {subsection}{\numberline {2.2}Learning API: issues and solutions}{8}
+\contentsline {subsection}{\numberline {2.3}Code cloning taxonomy}{11}
+\contentsline {subsection}{\numberline {2.4}Code cloners: techniques and features}{14}
+\contentsline {subsection}{\numberline {2.5}Simian overview}{17}
+\contentsline {section}{\numberline {3}Existing approaches}{19}
+\contentsline {subsection}{\numberline {3.1}API mining framework: MAPO}{20}
+\contentsline {subsection}{\numberline {3.2}Mining succinct API usage patterns: UP-Miner}{21}
+\contentsline {subsection}{\numberline {3.3}Summarizing API with clustering techniques: CLAMS}{21}
+\contentsline {subsection}{\numberline {3.4}API recommendation with statistical learning: APIrec}{23}
+\contentsline {subsection}{\numberline {3.5}Synthesizing API usage examples: Buse-Weimer algorithm}{24}
+\contentsline {subsection}{\numberline {3.6}Mining patterns for Android API: APIMiner}{25}
+\contentsline {subsection}{\numberline {3.7}API usage pattern recommendations with object usages}{26}
+\contentsline {subsection}{\numberline {3.8}Automatic recommendations from feature request: Jira platform}{27}
+\contentsline {subsection}{\numberline {3.9}API recommendation with reuse conducive development environment: CodeBroker}{28}
+\contentsline {subsection}{\numberline {3.10}Mining API usage example from the test code: Usetec}{29}
+\contentsline {subsection}{\numberline {3.11}Parameter-free probabilistic API mining: PAM}{30}
+\contentsline {section}{\numberline {4}Proposed approach}{34}
+\contentsline {subsection}{\numberline {4.1}Overview}{34}
+\contentsline {subsection}{\numberline {4.2}Preprocessing}{35}
+\contentsline {subsection}{\numberline {4.3}Simian within Eclipse platform}{36}
+\contentsline {subsection}{\numberline {4.4}CLAMS adaptation}{39}
+\contentsline {subsection}{\numberline {4.5}API recommendations}{40}
+\contentsline {section}{\numberline {5}Validation}{45}
+\contentsline {subsection}{\numberline {5.1}Research questions}{46}
+\contentsline {subsection}{\numberline {5.2}Study methodologies}{47}
+\contentsline {subsection}{\numberline {5.3}Dataset}{51}
+\contentsline {subsection}{\numberline {5.4}Metrics}{52}
+\contentsline {subsection}{\numberline {5.5}Results}{53}
+\contentsline {section}{\numberline {6}Conclusion}{58}
+\contentsline {section}{References}{60}

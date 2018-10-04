@@ -1,0 +1,155 @@
+\begin{thebibliography}{10}
+
+\bibitem{https://www.crossminer.org/_nodate}
+{https://www.crossminer.org/}.
+\newblock Last accessed on 30/09/2018.
+
+\bibitem{martin_p.robillard_introduction_2009}
+{Martin P.Robillard} and {Robert J. Walker}.
+\newblock An introduction to {Recommendation} {Systems} in {Software}
+  {Engineering}.
+\newblock pages 318--343, 2009.
+
+\bibitem{DBLP:journals/ftir/CaiR16}
+Fei Cai and Maarten de~Rijke.
+\newblock A survey of query auto completion in information retrieval.
+\newblock {\em Foundations and Trends in Information Retrieval},
+  10(4):273--363, 2016.
+
+\bibitem{martin_p._robillard_what_2009}
+{Martin P. Robillard}.
+\newblock What {Makes} {APIs} {Hard} to {Learn}? {Answers} from {Developers}.
+\newblock 2009.
+
+\bibitem{by_christopher_scaffidi_why_2006}
+{by Christopher Scaffidi}.
+\newblock Why are {APIs} {Difficult} to {Learn} and {Use}?
+\newblock 2006.
+
+\bibitem{marco_piccioni_empirical_2013}
+{Marco Piccioni}, {Carlo A. Furia}, and {Bertrand Meyer}.
+\newblock An {Empirical} {Study} of {API} {Usability}.
+\newblock 2013.
+
+\bibitem{chanchal_k._roy_comparison_2009}
+{Chanchal K. Roy}, {James R. Cordy}, and {Rainer Koschke}.
+\newblock Comparison and evaluation of code clone detection techniques and
+  tools: {A} qualitative approach.
+\newblock pages 470--495, 2009.
+
+\bibitem{stephane_ducasse_effectiveness_2005}
+{Stephane Ducasse}, {Oscar Nierstrasz}, and {Matthias Rieger}.
+\newblock On the effectiveness of clone detection by string matching.
+\newblock pages 37--58, 2005.
+
+\bibitem{nils_gode_incremental_2008}
+{Nils Gode}.
+\newblock {\em Incremental {Clone} {Detection}}.
+\newblock PhD thesis, University of Bremen, 2008.
+
+\bibitem{jablonski_cren:_2007}
+Patricia Jablonski and Daqing Hou.
+\newblock {CReN}: {A} {Tool} for {Tracking} {Copy}-and-paste {Code} {Clones}
+  and {Renaming} {Identifiers} {Consistently} in the {IDE}.
+\newblock In {\em Proceedings of the 2007 {OOPSLA} {Workshop} on {Eclipse}
+  {Technology} {eXchange}}, eclipse '07, pages 16--20, New York, NY, USA, 2007.
+  ACM.
+
+\bibitem{https://www.harukizaemon.com/simian/_last_nodate}
+{https://www.harukizaemon.com/simian/}.
+\newblock Last accessed on 25/09/2018.
+
+\bibitem{zhong_mapo:_2009}
+Hao Zhong, Tao Xie, Lu~Zhang, Jian Pei, and Hong Mei.
+\newblock {MAPO}: {Mining} and {Recommending} {API} {Usage} {Patterns}.
+\newblock In {\em {ECOOP} 2009 - {Object}-{Oriented} {Programming}, 23rd
+  {European} {Conference}, {Genoa}, {Italy}, {July} 6-10, 2009. {Proceedings}},
+  pages 318--343, 2009.
+
+\bibitem{wang_mining_2013}
+Jue Wang, Yingnong Dang, Hongyu Zhang, Kai Chen, Tao Xie, and Dongmei Zhang.
+\newblock Mining succinct and high-coverage {API} usage patterns from source
+  code.
+\newblock In {\em Proceedings of the 10th {Working} {Conference} on {Mining}
+  {Software} {Repositories}, {MSR} '13, {San} {Francisco}, {CA}, {USA}, {May}
+  18-19, 2013}, pages 319--328, 2013.
+
+\bibitem{katirtzis_summarizing_2018}
+Nikolaos Katirtzis, Themistoklis Diamantopoulos, and Charles~A. Sutton.
+\newblock Summarizing {Software} {API} {Usage} {Examples} {Using} {Clustering}
+  {Techniques}.
+\newblock In {\em Fundamental {Approaches} to {Software} {Engineering}, 21st
+  {International} {Conference}, {FASE} 2018, {Held} as {Part} of the {European}
+  {Joint} {Conferences} on {Theory} and {Practice} of {Software}, {ETAPS} 2018,
+  {Thessaloniki}, {Greece}, {April} 14-20, 2018, {Proceedings}.}, pages
+  189--206, 2018.
+
+\bibitem{nguyen_api_2016}
+Anh~Tuan Nguyen, Michael Hilton, Mihai Codoban, Hoan~Anh Nguyen, Lily Mast, Eli
+  Rademacher, Tien~N. Nguyen, and Danny Dig.
+\newblock {API} code recommendation using statistical learning from
+  fine-grained changes.
+\newblock In {\em Proceedings of the 24th {ACM} {SIGSOFT} {International}
+  {Symposium} on {Foundations} of {Software} {Engineering}, {FSE} 2016,
+  {Seattle}, {WA}, {USA}, {November} 13-18, 2016}, pages 511--522, 2016.
+
+\bibitem{buse_synthesizing_2012}
+Raymond P.~L. Buse and Westley Weimer.
+\newblock Synthesizing {API} usage examples.
+\newblock In {\em 34th {International} {Conference} on {Software}
+  {Engineering}, {ICSE} 2012, {June} 2-9, 2012, {Zurich}, {Switzerland}}, pages
+  782--792, 2012.
+
+\bibitem{borges_mining_2015}
+Hudson~S. Borges and Marco~Tulio Valente.
+\newblock Mining usage patterns for the {Android} {API}.
+\newblock {\em PeerJ Computer Science}, 1:e12, 2015.
+
+\bibitem{montandon_documenting_2013}
+João~Eduardo Montandon, Hudson Borges, Daniel Felix, and Marco~Tulio Valente.
+\newblock Documenting {APIs} with examples: {Lessons} learned with the
+  {APIMiner} platform.
+\newblock In {\em 20th {Working} {Conference} on {Reverse} {Engineering},
+  {WCRE} 2013, {Koblenz}, {Germany}, {October} 14-17, 2013}, pages 401--408,
+  2013.
+
+\bibitem{niu_api_2017}
+Haoran Niu, Iman Keivanloo, and Ying Zou.
+\newblock {API} usage pattern recommendation for software development.
+\newblock {\em Journal of Systems and Software}, 129:127--139, 2017.
+
+\bibitem{thung_automatic_2013}
+Ferdian Thung, Shaowei Wang, David Lo, and Julia~L. Lawall.
+\newblock Automatic recommendation of {API} methods from feature requests.
+\newblock In {\em 2013 28th {IEEE}/{ACM} {International} {Conference} on
+  {Automated} {Software} {Engineering}, {ASE} 2013, {Silicon} {Valley}, {CA},
+  {USA}, {November} 11-15, 2013}, pages 290--300, 2013.
+
+\bibitem{ye_reuse-conducive_2005}
+Yunwen Ye and Gerhard Fischer.
+\newblock Reuse-{Conducive} {Development} {Environments}.
+\newblock {\em Autom. Softw. Eng.}, 12(2):199--235, 2005.
+
+\bibitem{zhu_mining_2014}
+Zixiao Zhu, Yanzhen Zou, Bing Xie, Yong Jin, Zeqi Lin, and Lu~Zhang.
+\newblock Mining {API} {Usage} {Examples} from {Test} {Code}.
+\newblock In {\em 30th {IEEE} {International} {Conference} on {Software}
+  {Maintenance} and {Evolution}, {Victoria}, {BC}, {Canada}, {September} 29 -
+  {October} 3, 2014}, pages 301--310, 2014.
+
+\bibitem{fowkes_parameter-free_2016}
+Jaroslav~M. Fowkes and Charles~A. Sutton.
+\newblock Parameter-free probabilistic {API} mining across {GitHub}.
+\newblock In {\em Proceedings of the 24th {ACM} {SIGSOFT} {International}
+  {Symposium} on {Foundations} of {Software} {Engineering}, {FSE} 2016,
+  {Seattle}, {WA}, {USA}, {November} 13-18, 2016}, pages 254--265, 2016.
+
+\bibitem{https://www.cs.waikato.ac.nz_last_nodate}
+{https://www.cs.waikato.ac.nz}.
+\newblock Last accessed 30/09/2018.
+
+\bibitem{utor.rascal-mpl.org/_last_nodate}
+{utor.rascal-mpl.org/}.
+\newblock Last accessed on 24/09/2018.
+
+\end{thebibliography}

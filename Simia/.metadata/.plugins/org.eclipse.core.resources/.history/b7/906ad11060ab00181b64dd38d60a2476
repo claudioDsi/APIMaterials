@@ -1,3 +1,0 @@
-Optional[{
-    jgen.writeObject(value.getLabel());
-}]
