@@ -23,7 +23,7 @@
 \contentsline {subsection}{\numberline {4.3}Simian within Eclipse platform}{36}
 \contentsline {subsection}{\numberline {4.4}CLAMS adaptation}{39}
 \contentsline {subsection}{\numberline {4.5}API recommendations}{40}
-\contentsline {section}{\numberline {5}Validation}{45}
+\contentsline {section}{\numberline {5}Evaluation}{45}
 \contentsline {subsection}{\numberline {5.1}Research questions}{46}
 \contentsline {subsection}{\numberline {5.2}Study methodologies}{47}
 \contentsline {subsection}{\numberline {5.3}Dataset}{51}

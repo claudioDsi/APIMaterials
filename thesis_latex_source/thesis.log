@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6630 64-bit) (preloaded format=pdflatex 2018.3.15)  4 OCT 2018 16:06
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6630 64-bit) (preloaded format=pdflatex 2018.3.15)  8 OCT 2018 16:17
 entering extended mode
 **./thesis.tex
 (thesis.tex
@@ -1134,36 +1134,36 @@ op-ment en-vi-ron-ment: Code-
 \openout3 = `thesis.toc'.
 
  [2] (chapters/Introduction.tex
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 8.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 9.
 
 ("C:\Users\claudio\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\omscmr.fd"
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 8.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 9.
 [3]
-Underfull \hbox (badness 10000) in paragraph at lines 15--16
+Underfull \hbox (badness 10000) in paragraph at lines 16--17
 
  []
 
 <images/crossminer.png, id=41, 1062.86742pt x 465.60155pt>
 File: images/crossminer.png Graphic file (type png)
 <use images/crossminer.png>
-Package pdftex.def Info: images/crossminer.png  used on input line 19.
+Package pdftex.def Info: images/crossminer.png  used on input line 20.
 (pdftex.def)             Requested size: 398.33102pt x 174.49358pt.
 <images/Kb.png, id=43, 762.85pt x 706.64pt>
 File: images/Kb.png Graphic file (type png)
 <use images/Kb.png>
-Package pdftex.def Info: images/Kb.png  used on input line 28.
+Package pdftex.def Info: images/Kb.png  used on input line 29.
 (pdftex.def)             Requested size: 341.42854pt x 316.27065pt.
 [4 <./images/crossminer.png>]) [5 <./images/Kb.png (PNG copy)>]
 (chapters/ProblemDef.tex [6] [7] [8] [9] [10] [11]
-Underfull \hbox (badness 10000) in paragraph at lines 59--59
+Underfull \hbox (badness 10000) in paragraph at lines 67--67
 []|\OT1/cmr/bx/n/10.95 Code cloner
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 78--79
+Underfull \hbox (badness 10000) in paragraph at lines 86--88
 
  []
 
@@ -1171,141 +1171,146 @@ Underfull \hbox (badness 10000) in paragraph at lines 78--79
 <images/codeCloning.png, id=74, 773.89125pt x 402.50375pt>
 File: images/codeCloning.png Graphic file (type png)
 <use images/codeCloning.png>
-Package pdftex.def Info: images/codeCloning.png  used on input line 81.
+Package pdftex.def Info: images/codeCloning.png  used on input line 90.
 (pdftex.def)             Requested size: 398.33998pt x 207.17812pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 87--90
+Underfull \hbox (badness 10000) in paragraph at lines 96--101
 
  []
 
-[13 <./images/codeCloning.png>] [14] [15] [16]
-Underfull \hbox (badness 3068) in paragraph at lines 127--127
+[13 <./images/codeCloning.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 102--108
+
+ []
+
+[14] [15] [16]
+Underfull \hbox (badness 3068) in paragraph at lines 146--146
 []|\OT1/cmr/m/n/10 none , pos-si-ble val-ues:
  []
 
 
-Underfull \hbox (badness 1253) in paragraph at lines 141--142
+Underfull \hbox (badness 1253) in paragraph at lines 160--161
 \OT1/cmr/m/n/10 com-par-i-son (start/end line must be
  []
 
 
-Underfull \hbox (badness 1210) in paragraph at lines 143--144
+Underfull \hbox (badness 1210) in paragraph at lines 162--163
 []|\OT1/cmr/m/n/10 The curly braces are ig-nored so it
  []
 
 [17] [18]
-Underfull \hbox (badness 10000) in paragraph at lines 186--187
+Underfull \hbox (badness 10000) in paragraph at lines 205--206
 []|\OT1/cmr/bx/n/10 Similarity level
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 186--187
+Underfull \hbox (badness 10000) in paragraph at lines 205--206
 \OT1/cmr/bx/n/10 (du-pli-cated
  []
 
 
-Underfull \hbox (badness 4543) in paragraph at lines 188--188
+Underfull \hbox (badness 4543) in paragraph at lines 207--207
 []|\OT1/cmr/m/n/10 Plugin projects cre-ated with
  []
 
 ) (chapters/RelatedWorks.tex [19] [20] [21] [22] [23] [24] [25] [26] [27]
 [28] [29] [30] [31]
-Underfull \hbox (badness 10000) in paragraph at lines 169--169
+Underfull \hbox (badness 10000) in paragraph at lines 187--187
 []|\OT1/cmr/bx/n/10.95 Proposed
  []
 
 
-Overfull \hbox (0.57402pt too wide) in paragraph at lines 169--169
+Overfull \hbox (0.57402pt too wide) in paragraph at lines 187--187
 []|\OT1/cmr/bx/n/10.95 Supported
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 173--173
+Underfull \hbox (badness 10000) in paragraph at lines 191--191
 []|\OT1/cmr/m/n/10.95 Roselyn AST
  []
 
 
-Underfull \hbox (badness 1939) in paragraph at lines 173--174
+Underfull \hbox (badness 1939) in paragraph at lines 191--192
 []|\OT1/cmr/m/n/10.95 Probabilistic graph of
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 177--177
+Underfull \hbox (badness 10000) in paragraph at lines 195--195
 []|\OT1/cmr/m/n/10.95 GumTree AST
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 177--177
+Underfull \hbox (badness 10000) in paragraph at lines 195--195
 []|\OT1/cmr/m/n/10.95 Association-based
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 179--179
+Underfull \hbox (badness 10000) in paragraph at lines 197--197
 []|\OT1/cmr/m/n/10.95 Buse-Weimer
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 179--179
+Underfull \hbox (badness 10000) in paragraph at lines 197--197
 []|\OT1/cmr/m/n/10.95 Symbolic ex-e-
  []
 
 
-Underfull \hbox (badness 4765) in paragraph at lines 179--179
+Underfull \hbox (badness 4765) in paragraph at lines 197--197
 \OT1/cmr/m/n/10.95 cu-tion for path
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 181--181
+Underfull \hbox (badness 10000) in paragraph at lines 199--199
 []|\OT1/cmr/m/n/10.95 Structural sim-i-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 181--182
+Underfull \hbox (badness 10000) in paragraph at lines 199--200
 []|\OT1/cmr/m/n/10.95 Enhance doc-u-men-ta-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 183--183
+Underfull \hbox (badness 10000) in paragraph at lines 201--201
 []|\OT1/cmr/m/n/10.95 API pat-terns
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 183--183
+Underfull \hbox (badness 10000) in paragraph at lines 201--201
 \OT1/cmr/m/n/10.95 with ob-ject
  []
 
 
-Underfull \hbox (badness 1735) in paragraph at lines 183--183
+Underfull \hbox (badness 1735) in paragraph at lines 201--201
 []|\OT1/cmr/m/n/10.95 Modularity in-dex and
  []
 
 
-Underfull \hbox (badness 7963) in paragraph at lines 187--187
+Underfull \hbox (badness 7963) in paragraph at lines 205--205
 []|\OT1/cmr/m/n/10.95 Back-end search
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 187--187
+Underfull \hbox (badness 10000) in paragraph at lines 205--205
 []|\OT1/cmr/m/n/10.95 Discourse and user
  []
 
 
-Underfull \hbox (badness 1337) in paragraph at lines 187--188
+Underfull \hbox (badness 1337) in paragraph at lines 205--206
 []|\OT1/cmr/m/n/10.95 Relevant tasks, sig-na-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 189--189
+Underfull \hbox (badness 10000) in paragraph at lines 207--207
 []|\OT1/cmr/m/n/10.95 heuristic slic-ing
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 189--190
+Underfull \hbox (badness 10000) in paragraph at lines 207--208
 []|\OT1/cmr/m/n/10.95 API method in-vo-ca-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 191--191
+Underfull \hbox (badness 10000) in paragraph at lines 209--209
 []|\OT1/cmr/m/n/10.95 Structured EM
  []
 
@@ -1313,44 +1318,44 @@ Underfull \hbox (badness 10000) in paragraph at lines 191--191
 <images/approach.png, id=141, 631.35875pt x 433.62pt>
 File: images/approach.png Graphic file (type png)
 <use images/approach.png>
-Package pdftex.def Info: images/approach.png  used on input line 205.
+Package pdftex.def Info: images/approach.png  used on input line 223.
 (pdftex.def)             Requested size: 341.43924pt x 234.50198pt.
  [33]) (chapters/MyApproach.tex
 <images/simian.png, id=145, 796.9775pt x 931.48pt>
 File: images/simian.png Graphic file (type png)
 <use images/simian.png>
-Package pdftex.def Info: images/simian.png  used on input line 7.
+Package pdftex.def Info: images/simian.png  used on input line 8.
 (pdftex.def)             Requested size: 389.50087pt x 455.23528pt.
  [34 <./images/approach.png>] [35 <./images/simian.png>] [36]
 <images/Component.png, id=157, 783.92876pt x 472.76625pt>
 File: images/Component.png Graphic file (type png)
 <use images/Component.png>
-Package pdftex.def Info: images/Component.png  used on input line 72.
+Package pdftex.def Info: images/Component.png  used on input line 73.
 (pdftex.def)             Requested size: 341.43687pt x 205.91135pt.
  [37] [38] [39 <./images/Component.png>]
-<images/Usecase.png, id=169, 581.17125pt x 502.87875pt>
+<images/Usecase.png, id=170, 581.17125pt x 502.87875pt>
 File: images/Usecase.png Graphic file (type png)
 <use images/Usecase.png>
-Package pdftex.def Info: images/Usecase.png  used on input line 90.
+Package pdftex.def Info: images/Usecase.png  used on input line 93.
 (pdftex.def)             Requested size: 284.5281pt x 246.19789pt.
  [40 <./images/Usecase.png>]
-<images/Sequence.png, id=174, 839.135pt x 783.92876pt>
+<images/Sequence.png, id=175, 839.135pt x 783.92876pt>
 File: images/Sequence.png Graphic file (type png)
 <use images/Sequence.png>
-Package pdftex.def Info: images/Sequence.png  used on input line 101.
-(pdftex.def)             Requested size: 341.43552pt x 318.97267pt.
+Package pdftex.def Info: images/Sequence.png  used on input line 105.
+(pdftex.def)             Requested size: 398.33717pt x 372.1308pt.
  [41] [42 <./images/Sequence.png>] [43]
-Overfull \hbox (14.5023pt too wide) in paragraph at lines 238--239
+Overfull \hbox (14.5023pt too wide) in paragraph at lines 242--243
 [][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (19.43333pt too wide) in paragraph at lines 206--252
+Overfull \hbox (19.43333pt too wide) in paragraph at lines 210--256
 [][] [] 
  []
 
 [44]) (chapters/Threats.tex
-<images/rascal.png, id=189, 536.0025pt x 666.49pt>
+<images/rascal.png, id=190, 536.0025pt x 666.49pt>
 File: images/rascal.png Graphic file (type png)
 <use images/rascal.png>
 Package pdftex.def Info: images/rascal.png  used on input line 7.
@@ -1371,7 +1376,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 20--21
  []
 
 
-Overfull \hbox (18.35715pt too wide) in paragraph at lines 27--28
+Overfull \hbox (18.35715pt too wide) in paragraph at lines 28--29
 []\OT1/cmr/m/n/10.95 Sophisticated built-in data types pro-vide stan-dard so-lu
 -tions for many meta-programming
  []
@@ -1380,95 +1385,95 @@ Overfull \hbox (18.35715pt too wide) in paragraph at lines 27--28
 <images/EASY.png, id=202, 578.16pt x 565.36218pt>
 File: images/EASY.png Graphic file (type png)
 <use images/EASY.png>
-Package pdftex.def Info: images/EASY.png  used on input line 39.
+Package pdftex.def Info: images/EASY.png  used on input line 40.
 (pdftex.def)             Requested size: 284.52713pt x 278.229pt.
 <images/Folders.png, id=203, 352.31625pt x 562.1pt>
 File: images/Folders.png Graphic file (type png)
 <use images/Folders.png>
-Package pdftex.def Info: images/Folders.png  used on input line 54.
+Package pdftex.def Info: images/Folders.png  used on input line 55.
 (pdftex.def)             Requested size: 214.00406pt x 341.431pt.
  [48 <./images/EASY.png>] [49 <./images/Folders.png>]
-Overfull \hbox (3.70483pt too wide) in paragraph at lines 97--98
+Overfull \hbox (3.70483pt too wide) in paragraph at lines 100--101
 [][][][][][][][][][][][][][][][][][][][][][][][][]  
  []
 
 
-Overfull \hbox (19.4547pt too wide) in paragraph at lines 106--107
+Overfull \hbox (19.4547pt too wide) in paragraph at lines 109--110
 [][][][][][][][][][][][][][][][][][][][][][][][][]  
  []
 
 [50]
-Overfull \hbox (19.4547pt too wide) in paragraph at lines 117--118
+Overfull \hbox (19.4547pt too wide) in paragraph at lines 120--121
 [][][][][][][][][][][][][][][][][][][][][][][][][]  
  []
 
 
-Overfull \hbox (14.20474pt too wide) in paragraph at lines 119--120
+Overfull \hbox (14.20474pt too wide) in paragraph at lines 122--123
 [][][][][][][][][][][][][][][][][][][][][]  
  []
 
 
-Overfull \hbox (19.4547pt too wide) in paragraph at lines 121--122
+Overfull \hbox (19.4547pt too wide) in paragraph at lines 124--125
 [][][][][][][][][][][][][][][][][][][][][][][][][]  
  []
 
 
-Overfull \hbox (24.70465pt too wide) in paragraph at lines 123--125
+Overfull \hbox (24.70465pt too wide) in paragraph at lines 126--128
 [][][][][][][][][][][][][][][][][][][][][][][][][]  
  []
 
 [51]
-Underfull \hbox (badness 10000) in paragraph at lines 166--167
+Underfull \hbox (badness 10000) in paragraph at lines 169--170
 
  []
 
 
 LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <15> not available
-(Font)              size <14.4> substituted on input line 171.
+(Font)              size <14.4> substituted on input line 174.
 
-LaTeX Font Info:    Calculating math sizes for size <15> on input line 173.
+LaTeX Font Info:    Calculating math sizes for size <15> on input line 176.
 
 LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <10.49995> not available
-(Font)              size <10.95> substituted on input line 173.
+(Font)              size <10.95> substituted on input line 176.
 
 
 LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <7.5> not available
-(Font)              size <7> substituted on input line 173.
+(Font)              size <7> substituted on input line 176.
 
 
 LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <15> not available
-(Font)              size <14.4> substituted on input line 173.
+(Font)              size <14.4> substituted on input line 176.
 
 
 LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <10.49995> not available
-(Font)              size <10.95> substituted on input line 173.
+(Font)              size <10.95> substituted on input line 176.
 
 
 LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <7.5> not available
-(Font)              size <7> substituted on input line 173.
+(Font)              size <7> substituted on input line 176.
 
 
 LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <15> not available
-(Font)              size <14.4> substituted on input line 173.
+(Font)              size <14.4> substituted on input line 176.
 
 
 LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <10.49995> not available
-(Font)              size <10.95> substituted on input line 173.
+(Font)              size <10.95> substituted on input line 176.
 
 
 LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <7.5> not available
-(Font)              size <7> substituted on input line 173.
+(Font)              size <7> substituted on input line 176.
 
 
 LaTeX Font Warning: Font shape `OMX/cmex/m/n' in size <15> not available
-(Font)              size <14.4> substituted on input line 173.
+(Font)              size <14.4> substituted on input line 176.
 
 
 LaTeX Font Warning: Font shape `OMX/cmex/m/n' in size <10.49995> not available
-(Font)              size <10.95> substituted on input line 173.
+(Font)              size <10.95> substituted on input line 176.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 172--179
+Underfull \hbox (badness 10000) in paragraph at lines 175--182
 
  []
 
@@ -1476,39 +1481,39 @@ Underfull \hbox (badness 10000) in paragraph at lines 172--179
 <images/PAM.png, id=227, 732.7375pt x 1108.14pt>
 File: images/PAM.png Graphic file (type png)
 <use images/PAM.png>
-Package pdftex.def Info: images/PAM.png  used on input line 203.
+Package pdftex.def Info: images/PAM.png  used on input line 207.
 (pdftex.def)             Requested size: 301.01689pt x 455.23651pt.
  [53] [54 <./images/PAM.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 255--257
+Underfull \hbox (badness 10000) in paragraph at lines 259--261
 
  []
 
 <images/Precision.png, id=235, 616.55344pt x 346.29375pt>
 File: images/Precision.png Graphic file (type png)
 <use images/Precision.png>
-Package pdftex.def Info: images/Precision.png  used on input line 259.
+Package pdftex.def Info: images/Precision.png  used on input line 263.
 (pdftex.def)             Requested size: 398.34657pt x 223.73555pt.
 [55]
 <images/Recall.png, id=240, 616.55344pt x 346.29375pt>
 File: images/Recall.png Graphic file (type png)
 <use images/Recall.png>
-Package pdftex.def Info: images/Recall.png  used on input line 266.
+Package pdftex.def Info: images/Recall.png  used on input line 270.
 (pdftex.def)             Requested size: 398.34657pt x 223.73555pt.
 <images/SuccRate.png, id=241, 620.3175pt x 346.29375pt>
 File: images/SuccRate.png Graphic file (type png)
 <use images/SuccRate.png>
-Package pdftex.def Info: images/SuccRate.png  used on input line 274.
+Package pdftex.def Info: images/SuccRate.png  used on input line 278.
 (pdftex.def)             Requested size: 398.33646pt x 222.37228pt.
  [56 <./images/Precision.png> <./images/Recall.png>]
 <images/Fmeasure.png, id=245, 620.3175pt x 346.29375pt>
 File: images/Fmeasure.png Graphic file (type png)
 <use images/Fmeasure.png>
-Package pdftex.def Info: images/Fmeasure.png  used on input line 282.
+Package pdftex.def Info: images/Fmeasure.png  used on input line 286.
 (pdftex.def)             Requested size: 398.33646pt x 222.37228pt.
 <images/time.png, id=246, 616.55344pt x 346.29375pt>
 File: images/time.png Graphic file (type png)
 <use images/time.png>
-Package pdftex.def Info: images/time.png  used on input line 292.
+Package pdftex.def Info: images/time.png  used on input line 296.
 (pdftex.def)             Requested size: 398.34657pt x 223.73555pt.
  [57 <./images/SuccRate.png> <./images/Fmeasure.png>]) (chapters/Conclusion.tex
 ) [58 <./images/time.png>] [59] (thesis.bbl [60]) [61] (thesis.aux)
@@ -1523,11 +1528,11 @@ LaTeX Warning: There were multiply-defined labels.
 Here is how much of TeX's memory you used:
  10141 strings out of 493305
  157730 string characters out of 3128932
- 304380 words of memory out of 3000000
+ 306380 words of memory out of 3000000
  13456 multiletter control sequences out of 15000+200000
  12115 words of font info for 44 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 51i,18n,77p,3314b,1777s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 51i,18n,77p,2229b,1777s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Users/claudio/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfon
 ts/cm/cmbx10.pfb><C:/Users/claudio/AppData/Local/Programs/MiKTeX 2.9/fonts/type
 1/public/amsfonts/cm/cmbx12.pfb><C:/Users/claudio/AppData/Local/Programs/MiKTeX
@@ -1546,7 +1551,7 @@ onts/cm/cmss12.pfb><C:/Users/claudio/AppData/Local/Programs/MiKTeX 2.9/fonts/ty
 pe1/public/amsfonts/cm/cmsy10.pfb><C:/Users/claudio/AppData/Local/Programs/MiKT
 eX 2.9/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/claudio/AppData/Loca
 l/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on thesis.pdf (61 pages, 2608032 bytes).
+Output written on thesis.pdf (61 pages, 2606703 bytes).
 PDF statistics:
  306 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
