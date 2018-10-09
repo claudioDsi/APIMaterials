@@ -1,6 +1,6 @@
 
 \subsection{Overview}
-After the problem statement and an brief description of Simian tool, we go to describe a possible approach to solve the problem of API function call recommendations. This approach, described in Figure 2, exploits the CLAMS work, in particular the patterns extracted as output, plus the code cloning features provided by Simian. So, at the beginning of the process and after a preprocessing phase, we have the patterns files and the developer's file, represented by a single string. Notice that with this way we keep trace on the context in which the user is developing. Then, all these files is used to extract the recommendations in form of patterns by using Simian integrated in Eclipse platform, following the options specified in next sections. \\
+After the problem statement and an brief description of Simian tool, we go to describe our approach to solve the problem of API function call recommendations. This approach, described in Figure 5, exploits the CLAMS work, in particular the patterns extracted as output, plus the code cloning features provided by Simian. So, at the beginning of the process and after a preprocessing phase, we have the patterns files and the developer's file, represented by a single string. Notice that with this way we keep trace on the context in which the user is developing. Then, all these files is used to extract the recommendations in form of patterns by using Simian integrated in Eclipse platform, following the options specified in next sections. \\
 Basically, at the end of this phase, Simian retrieves the cloned clone between the developer's file and the CLAMS patterns related to the library that the user is implemented. By using these file, the tool performs recommendations by remove the cloned part and suggest to the user the new lines of code that represent the missing pattern for the user. In next sections, we going in deep to describe the entire system and how the integration of Simian and CLAMS works in practise. 
 
 
@@ -8,7 +8,7 @@ Basically, at the end of this phase, Simian retrieves the cloned clone between t
 \includegraphics[width=14cm,height=16cm,keepaspectratio]{images/simian.png}
 \centering
 \caption{Overview of the proposed approach}
-\label{fig:cmd}
+\label{Figure 5}
 \end{figure}
 
 \subsection{Preprocessing}
@@ -63,12 +63,12 @@ The project has the following structure, divided in subpackages:
 \item model: It contains the representation of the SimianPattern object, useful to keep all information for the cloning phase;
 \item evaluation: It contains all the functions necessary for the evaluation framework, specified in the proper section.
 \end{itemize}
-Going in deep on the business implementation, we have three main classes: SimianDataExchangeImpl, that performs the code cloning activity and collects all data needed for the analysis, APICallRecommederImpl, that takes the data from Aulistener and filter them and SimianFileUtilitiesImpl, that contains all the operation related to files. In particular, SimianDataExchangeImpl implements the original Simian class showed in the table above and it initialize the tool in order to perform the code cloning activities. Among the implemented methods, we use the function \textit{block()} retrieve all necessary information for a duplicated block of code and the file that contains it. The \textit{endCheck()} function is called at the end of the process and manipulated the class CheckSummary mentioned before. In this way, we can obtain all information the total number of analyzed files, the duplicated ones, the time required for the comparison and the total number of blocks. This class implements also the ExchangeData interface, that is used as a bridge for ApiCallRecommenderImpl class, as Simian interface provide only void methods without the possibility to return the necessary information.\\
+Going in deep on the business implementation, we have three main classes: SimianDataExchangeImpl, that collects all data needed for the analysis SimianFileUtilitiesImpl, that contains all the operation related to files and ApiCallRecommenderImpl, that takes all information provided by these two classes and performs the recommendations. In particular, SimianDataExchangeImpl implements the original Simian class showed in the table above and it initialize the tool in order to perform the code cloning activities. Among the implemented methods, we use the function \textit{block()} retrieve all necessary information for a duplicated block of code and the file that contains it. The \textit{endCheck()} function is called at the end of the process and manipulated the class CheckSummary mentioned before. In this way, we can obtain all information the total number of analyzed files, the duplicated ones, the time required for the comparison and the total number of blocks. This class implements also the ExchangeData interface, that is used as a bridge for ApiCallRecommenderImpl class, as Simian interface provide only void methods without the possibility to return the necessary information.\\
 Going further, we describe now the APICallRecommenderImpl class, that collects the data coming from the previous class and analyze them in order to produce the recommendation. The main function is \textit{findPattern()}, that loads the necessary files and launch Simian analysis exploiting the Aulistener interface. The files are loaded in pairs, in which we have the snippet of code coming from the developer's file and the other component is the list of CLAMS pattern. During the analysis phase, it is necessary to check the files and in particular, we have to discard from the analysis the files that contains duplicated blocks within themselves. It is possible because Simian retrieve for each pairs the files that contains a duplicated blocks of code and, in this way, we can reduce some bias lead to the fact that in the developer's snippet we can have some duplicated lines of code that are not interesting for the recommendation. Once we have the block, we can create the object SimianPattern that represent the discovered pattern for the snippet among the CLAMS results.\\
 The class for this object belongs to the model subpackage, that represent the extracted pattern. Following the POJO structure, we have getter and setter functions for each property of the object, gradually filled during the analysis. We have duplicated lines to store the cloned code, the filename of the pattern and the elapsed time for each pattern that Simian has found in the analysis. In this way, we can easily write in a file to show the final results in a more understandable way. The original Simian output, in facts, shows only the duplicated lines and CLAMS puts the patterns in a ranked list but without the context, represented in this case by the import at the beginning of the file. Thanks to this structure, we can also rank the patterns from the one that have more lines in commons, using the proper field in the wrapper class.\\
 The last main component is SimianFileUtilities, in which we open all necessary files, write the recommendations and create temporary files for the code cloning activity. All these classes are integrated in test class that calls in the proper sequence all the methods to perform the final recommendation. In particular, the method \textit{scan()} takes all files that contains patterns extracted by CLAMS while the function \textit{createTemporaryFile()} creates the temporary files to perform the comparison. To extract the ground truth part used in the evaluation part, we use the function \textit{parseAST()}. This function uses JavaParser library to visit the AST and takes the body of the method that we are interested in. In this way, Simian inputs are only partial fragments of code that represent the typical developing scenario. \\
 The project contains also classes with the evaluation task, such as the function to build the Rascal project structure in order to analyze the corresponding method invocations and to apply the metrics on them. More details on it is provide in the evaluation framework section. 
-The overall architecture is depicted in Figure 5, in which components represent the described features.
+The overall architecture is depicted in the components diagram below.
 \begin{figure}[H]
 \includegraphics[width=12cm,height=12cm,keepaspectratio]{images/Component.png}
 \centering
@@ -79,14 +79,13 @@ The overall architecture is depicted in Figure 5, in which components represent 
 \subsection{CLAMS adaptation}
 Regarding the CLAMS output, we describe the original structure as well as the necessary modification to integrate it in our approach. The authors, differently from other works, provide the complete source code and commands to set up the entire environment to have CLAMS working on Linux . CLAMS is written in Python and uses srcXML and Astyle to produce XML files and to formatter in a human-readable way the code respectively, but as claimed by the authors, there is no really constrain about the technologies to use in case of a new implementation. As input, CLAMS takes two kind of files: client files, that represent the real project on Github related to the dataset that authors use for evaluation phase while example files are used as training set.\\ 
 All these files are collected in a folder, that CLAMS loads by getting the path. Moreover, there is a namespace file that identify the name of classes used in the clients and example files by using their complete namespaces such as org.codehaus.jackson. The last input used by the main.py file, that is used to initialise the platform, is the list of methods that are represented by an ARFF(Attribute-Relation File Format) file~\cite{https://www.cs.waikato.ac.nz_last_nodate}, used in the machine learning domain. It is an ASCII text file that describes a list of instances sharing a set of attributes, specified in the header section. In our case, the attributes are the method declaration (the caller) and the method invocations (the calls). 
-If we want to add some other libraries with respect to the original dataset (MQTT-Json projects), we need to replicate the same structure for CLAMS; to do this, we found on Github several projects related to this libraries and produce the ARFF files using Rascal, as we will see in the validation section
 \newline
 There is a phase of preprocessing in which CLAMS extracts API call and their AST using JDT utilities and represent them in xml using srcXML. The core of the project is the snippet generator module (represented by summarise.py file) that takes as input a source code file (java in this case) and using srcXML they first replace literals with xml types and delete comment. Then, they separate the API code from code that doesn't contain API call and highlights the variable in local scope of API. Finally, the code without API call is removed and Clams add some comments near the API statement and needed variables. Notice that their approach considers also the classical statement like if-else structure as a part of API statement. \\
 For clustering, they use both HDBSCAN and k-medoids algorithm that are quite similar and differs only in the precision of the returned snipped (HDBSCAN is more accurate but k-medoids covers more methods). For both of them, the authors import Python libraries that implement these algorithm quite well and we can switch the algorithm by change the parameter in the main.py. Moreover, they have the file ranking.py to order the generated snippet. The rank is based on the example files that contains a sequence of API call; if the sequence within the file is a super-sequence of the sequence of snippet that we considered, so this snippet is supported, and its rank is increased. In the result folder, CLAMS put the library that we want to analyze, the methods, the source file (both in .java and xml format), some JSON file that represent all information about a method (class, package, rank, id) and the arff file related to the library. \newline
 For the integration step in our platform, it is necessary to slightly modify the original approach to have better results. In particular, if we use the pattern of CLAMS as they are, there are some bias because, through srcML, CLAMS substitutes the literals with its own type and Simian is not able to detect them as cloned code, even using all available options regarding the code. So, to avoid this situation, we must modify the function that substitute literals, putting some default value instead of srcML types. This modification doesn't affect the validity and accuracy of extracted path because is just a matter of modify literals with another and allow Simian to avoid bias in the code cloning analysis.
 
 \subsection{API recommendations}
-At the end of these preparatory phases, we describe now the core of this project, the API recommendations. Once the Simian is launched as we described, it performs the detection of code cloning activity on the CLAMS patterns files and the developer's code snippet. The typical scenario is depicted by the use case diagram in Figure 6, in which the developer asks for recommendations.
+At the end of these preparatory phases, we describe now the core of this project, the API recommendations. Once the Simian is launched as we described, it performs the detection of code cloning activity on the CLAMS patterns files and the developer's code snippet. The typical scenario is depicted by the use case diagram below, in which the developer asks for recommendations.
 
 
 \begin{figure}[H]
@@ -205,9 +204,9 @@ Extracted method:
     client.disconnect();
     log("Disconnected");
  \end{lstlisting}
-\vspace{5mm}
 
-\begin{minipage}[t]{0.5\textwidth}
+\noindent
+\begin{minipage}[t]{0.4\textwidth}
 \begin{lstlisting}
 CLAMS pattern #1
 
@@ -225,6 +224,7 @@ CLAMS pattern #1
 }
 \end{lstlisting}
 \end{minipage}
+\hfill
 \begin{minipage}[t]{0.5\textwidth}
 
 \begin{lstlisting}
@@ -237,9 +237,10 @@ CLAMS pattern #2
     String brokerUrl;
     byte[] payload;
     int qos;
-    log("a string"+brokerUrl + "a string"+client.getClientId());
+    log("a string"+brokerUrl
+     + "a string"+client.getClientId());
     IMqttToken conToken = client.connect(conOpt,null,null);
-    log("a string"+System.currentTimeMillis()+ "a string"+topicName+"a string"+qos);
+    log("a string" +System.currentTimeMillis()+ "a string"+topicName+"a string"+qos);
     IMqttDeliveryToken pubToken = client.publish(topicName, message, null, null);
     pubToken.waitForCompletion();
     IMqttToken discToken = client.disconnect(null, null);
