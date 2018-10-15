@@ -1,5 +1,62 @@
-Considering the state of the art, there are several approaches that face the problem described in previous section. 
-The key point is to find, on one side, a simple and effective way to extract API functions call and build the recommendation system and, on other hand, is necessary to use formal and proper algorithm and techniques that produce very suitable results. In the literature, there are main approaches  to analyze the code contained in the source files, adopting some similarity metric, optionally followed by clustering techniques and then how to represent the obtained results in form of recommendation that should be clear and effective. So, we present a set of approaches that follow the same main skeleton to solve the problem; what is different among them are the techniques, algorithms and produced results but they are all useful and give the flavour of the API call function problem. 
+Considering the state of the art, there are several approaches that face the 
+problem described in previous section. The key point is to find a simple and 
+effective way to extract API functions call and build a recommendation system 
+able to provide developers with very suitable recommendations with respect to 
+the developer context. Even though several techniques and tools have been 
+proposed over the last decade, most of them share the main activities shown in 
+Fig. \ref{fig:apiRecommendationExistingApproaches}. In particular, the 
+developer context consisting on source code files is analysed to obtain 
+corresponding ASTs. The retrieved abstract syntax trees are taken as input by a 
+similarity analysis step in order to retrieve from the available knowledge the 
+cluster of API client source codes that share some similarity with the code the 
+developer is working on. Subsequently, a ranking activity is performed in order 
+to finally recommend the developer with source code fragments that on one hand 
+are similar to the developer context and on the other hand permits to grasp how 
+other existing projects use the considered APIs. In the following, 
+representative approaches implementing the process shown in Fig. 
+\ref{fig:apiRecommendationExistingApproaches} are presented and compared at the 
+end with respect to a set of specific characteristics.
+
+
+
+
+%So far, we have seen several approaches to perform recommendations related to 
+%API context. The proposed tool from the literature are very different from the 
+%point of view of dataset, similarity measure and clustering techniques but 
+%they 
+%share a conceptual model that starts from the abstract syntax tree of the code 
+%to the final recommendations. This procedure is depicted in Figure 1, that 
+%describe at high level the main steps to reach the final output. Many of these 
+%are optionally but, as we have seen in the previous discussion, are strongly 
+%recommended to perform a better analysis and to have good enough results.
+%For the proposed approach, we choose to combine the results coming from CLAMS 
+%with the code cloning technique, by using Simian. Basically, we propose 
+%something that is different from the existing approach analyzed. For example, 
+%we avoid to use clustering techniques because we rely completely on Simian for 
+%this task.  
+
+\begin{figure}[!h]
+	\includegraphics[width=12cm,height=14cm,keepaspectratio]{images/approach.png}
+	\centering
+	\caption{Main activities shared by existing techniques to provide 
+	developers with API recommendations}
+	\label{fig:apiRecommendationExistingApproaches}
+\end{figure}
+
+
+
+
+
+
+%To this end, several approaches are available able to 
+%analyze the developer source, to adopt some similarity metrics, and to 
+%optionally apply clustering techniques for representing the obtained results 
+%in 
+%the form of recommendations that should be clear and effective. 
+
+%approaches that follow the same main skeleton to solve the problem; what is 
+%different among them are the techniques, algorithms and produced results but 
+%they are all useful and give the flavour of the API call function problem. 
 
 
 
@@ -163,6 +220,8 @@ prob: 0,00544
 
 \end{lstlisting}
 
+
+\section{Summary}
 Table 1 gives a summary of approaches showed until now. As all the approaches share almost the same baseline, we described in the table the following feature:
 \begin{itemize}
 \item Proposed tool: it represents the proposed too, in form of algorithm, plugin or platform;
@@ -216,14 +275,5 @@ PAM & JDT & Structured EM algorithm & Probabilistic model & Java  &  Ranked list
 \end{center}
 
 
-So far, we have seen several approaches to perform recommendations related to API context. The proposed tool from the literature are very different from the point of view of dataset, similarity measure and clustering techniques but they share a conceptual model that starts from the abstract syntax tree of the code to the final recommendations. This procedure is depicted in Figure 1, that describe at high level the main steps to reach the final output. Many of these are optionally but, as we have seen in the previous discussion, are strongly recommended to perform a better analysis and to have good enough results.
-For the proposed approach, we choose to combine the results coming from CLAMS with the code cloning technique, by using Simian. Basically, we propose something that is different from the existing approach analyzed. For example, we avoid to use clustering techniques because we rely completely on Simian for this task.  
-
-\begin{figure}[!h]
-\includegraphics[width=12cm,height=14cm,keepaspectratio]{images/approach.png}
-\centering
-\caption{API recommendations in the existing approaches}
-\label{fig:cmd}
-\end{figure}
 
 
