@@ -57,14 +57,20 @@ headsepline, % Uncomment to get a line under the header
 \usepackage{pdflscape}
 \usepackage{mathtools}
 \usepackage{adjustbox}
-\usepackage{listings}
 
+\usepackage{listings}
+\usepackage{color}
+\usepackage{multicol}
+\usepackage{amsmath}
+\usepackage{mathtools}
+
+\usepackage{verbatim}
 \usepackage{amsthm}
 
 \newcommand{\projectName}{CROSSMINER~}
 \newcommand{\projectNameNoT}{CROSSMINER}
 \newcommand{\cc}[1]{\multicolumn{1}{c}{#1}}
-%\newcolumntype{d}[1]{D{.}{.}{#1}}
+\newcolumntype{d}[1]{D{.}{.}{#1}}
 \newcommand{\code}[1]{{\texttt{#1}}}
 \newcommand{\codefoot}[1]{{\texttt{#1}}}
 
@@ -76,6 +82,28 @@ headsepline, % Uncomment to get a line under the header
 \newcommand*{\eg}{e.g.,\@\xspace}
 \newcommand*{\cf}{cf.\@\xspace}
 
+
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.40}
+
+\lstset{frame=tb,
+	language=Java,
+	aboveskip=3mm,
+	belowskip=3mm,
+	showstringspaces=false,
+	columns=flexible,
+	basicstyle={\small\ttfamily},
+	numbers=none,
+	numberstyle=\tiny\color{gray},
+	keywordstyle=\color{mauve},
+	commentstyle=\color{dkgreen},
+	stringstyle=\color{blue},
+	breaklines=true,
+	breakatwhitespace=true,
+	tabsize=3
+}
 
 
 
@@ -342,7 +370,7 @@ The acknowledgments and the people to thank go here, don't forget to include you
 	
 	
 	
-	\chapter{Proposed approach}
+	\chapter{The Proposed Approach}
 	\label{sec:MyApproach}
 	\input{src/MyApproach}
 	
