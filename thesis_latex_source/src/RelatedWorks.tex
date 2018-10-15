@@ -271,47 +271,141 @@ big issue from the adaptation point of view, as we can see later.
 
 \section{APIrec -- API recommendation with statistical learning}
 
-APIrec tool~\cite{nguyen_api_2016} uses statistical techniques to keep trace of 
+APIrec tool~\cite{nguyen_api_2016} uses statistical techniques to keep track of 
 the context in which a developer writes its own code, by analyzing the 
 co-occurrences, and fine-grained code changes. Differently from the previous 
-approaches, the authors keep trace of the context in which the API method call 
+approaches, the authors keep track of the context in which the API method call 
 may be useful. As usual, to extract the source code from the 50 Java projects 
 randomly selected from Github, APIrec navigates the AST of the source code 
 using the GumTree tool. It is important to remark that, in 
 ~\cite{nguyen_api_2016} authors use the term API to refer both external and 
 internal method calls and APIrec performs recommendations only if the context 
-of API is correct for a certain situation. 
-
-
-Regarding the AST, we have the atomic change that represent a new element on 
-AST composed by kind of operation, AST node and label. A collection of atomic 
-changes is called transaction and is stored in a bag, a particular data 
+of API is correct for a certain situation. Regarding the AST, a collection of 
+atomic changes is called transaction and is stored in a bag, a particular data 
 structure that we commonly find in the AST definitions. An important concept 
 that is a key definition for the APIrec implementation is the code context, 
-represented by code tokens related to the API that the developer is writing. 
+represented by code tokens related to the API that the developer is using. 
 Taking into account the tokens, the authors consider both the distance and the 
 order of this, as an API method calls have a specific call order and they are 
 really effectiveness only if there are called in the proper way. To remark this 
-feature, APIrec gives also a weight based on how near the token by is 
+feature, APIrec gives also a weight based on how near the token is by 
 considering the distance matrix. Once they define this set of metric and 
-concept, the authors show the inference model based on likehood scores taking 
-into account both change of the context and code.\newline
-The entire model is based on the correlation between a code token and another, expressed as we said in term of atomic changes in the AST and transactions. In particular, APIrec evaluates the probability that certain events, namely the transactions, occurs given another. This score is called association score and it is used to calculate the distance between two changes into the code as well as new methods that will take a part in the final recommendation. \\
-At the end of these computations, all possible scores and weights are calculated but it is not enough to perform the recommendations. In fact, it is necessary to apply machine learning techniques in order to train APIrec with the code changes and context. To do this, the authors use hill-climbing adaptive learning filled with three parameters: numbers of co-occurrence founded with fine-grained atomic changes, numbers of co-occurrences related to changes tokens and two weights. With this process, the necessary scores are calculated and APIrec is able to perform the recommendation by considering the most probable method calls for a certain API. The methods are also ranked by highest probability of usage but also distance, scope and dependency are considered in the ranking phase. To support their tool, the authors conducts several experiments over a very large dataset, including also analysis regarding code change context, user empirical studies, evaluation of accuracy and predictions.
+concept, the authors show the inference model based on likehood scores by 
+taking into account both change of the context and code.
+
+The entire model is based on the correlation between a code token and another, 
+expressed as we said in term of atomic changes in the AST and transactions. In 
+particular, APIrec evaluates the probability that certain events, namely the 
+transactions, occurs given another. This score is called association score and 
+it is used to calculate the distance between two changes into the code as well 
+as new methods that will take a part in the final recommendation. At the end of 
+these computations, all possible scores and weights are calculated but it is 
+not enough to perform the recommendations. In fact, it is necessary to apply 
+machine learning techniques in order to train APIrec with the code changes and 
+context. To do this, the authors use hill-climbing adaptive learning filled 
+with three parameters: numbers of co-occurrence founded with fine-grained 
+atomic changes, numbers of co-occurrences related to changes tokens and two 
+weights. With this process, the necessary scores are calculated and APIrec is 
+able to perform the recommendation by considering the most probable method 
+calls for a certain API. The methods are also ranked by highest probability of 
+usage but also distance, scope and dependency are considered in the ranking 
+phase. To support their tool, the authors conducts several experiments over a 
+very large dataset, including also analysis regarding code change context, user 
+empirical studies, evaluation of accuracy, and predictions.
 
 
 
 \section{Buse-Weimer algorithm -- Synthesizing API usage examples}
-Paper from Buse and Weimer~\cite{buse_synthesizing_2012} is still about API call but is focused to produce automatically a documentation for the projects in a human readable format.
-Once they obtain data from mining phase, the proposed algorithm extract API pattern and rearrange them in a more readable and effectiveness format. The focus of this work is on Java documentation that provides useful hints and suggestions when a developer is implementing an API functionality. Although in general the Java doc helps in this kind of activity, it often lacks in something, as the examples are too general or it not able to give a concrete hint for the problem that the developer is trying to solve. So, the aim of the authors is to produce an enhanced version of documentation that is really useful for the developers, starting from retrieve the API patterns, defined as the sequence of function call for a certain API class, called target class. \\
-Once this first step is done, the algorithm tries to produce a human-written documentation for the API, taking into account some characteristics such as the lines of code, that are 11 on average but 5 for the median. Moreover, the authors consider also the abstract initialization, abstract usage and exception handling. All this information is extracted using JDK utilities and they are validated by the authors, putting more effort on the human aspect. To validate the results, they involve over 150 developer and collect their answers about the proposed results. By analyzing these statistics, a typical developer wants multiple uses for a certain class or API method and not only one, that may be not useful for his particular context. Another key point is the conciseness of the suggested snippet of code, as well as the readability and variables names that must be related to the context, also including temporary ones to improve the readability. So, from this survey, we can identify four key points to achieve the human-written documentation: size of the code, readability, representativeness and concreteness.\newline
-To reach these goals, we can look to the algorithm implementation, that the authors divide into four main step: the path enumeration, predicate generation, clustering and finally the output documentation. Starting from the path identification, they scan the code and identify acyclic part of the code that represent a path for the target class. Notice that this approach can led some bias but it happens in practice and the authors choose to stay close with respect to real implementation. \\
-So, they use intensively human users to perform test and to measure the accuracy of their proposed algorithm. As the previous approaches, they parse the code and cluster the significant result with a distance matrix in order to build the related documentation. As the purpose is different from previous works, they are adding some clustering also on predicate and represent the abstract pattern as a graph. Then they compute symbolic execution over these paths on order to produce inter-procedural path predicates that are logical formulas used to represent the code and in particular, if a certain statement is reachable or not. From this abstraction, the algorithm computes use seeds that are local instantiations of fields, objects and whatever is related to the target class. Finally, from these it produces concrete uses, the real hints about the target class, that are stored in graph form in which edges keep trace about what happens before and so, in this way, we have the context as well as the chain of methods necessary to implements the features related to the target class. \\
-To have better results, however, it is not enough to produce usage examples, as we seen so far with the other related works. Clustering is necessary to avoid heavy computation, and the proposed algorithm exploits the well-known k-medoids algorithm with some modifications, as the original algorithm is not suitable to detect distance about objects. The distance matrix that is taking into account by the k-medoids algorithm is based on the happens before relation obtained from the graph. So, at the end of this computation, the algorithm obtains the cluster and summarize them into abstract uses, represented once again in graph form. \\
-The final step of the proposed algorithm is to produce the documentation. Starting from the abstract uses, it uses a topological approach to avoid the cycle and branches that appear in the code, as the final recommended documentation about the target class must be a flat file. Using this approach, the authors are able to retrieve a Java documentation related to the target class and respect also the Java syntax, so they avoid malformed documentation. Moreover, with this approach, the algorithm handles the exception treatment with try catch clauses, that are put always in the correct order. As said before, the focus of this approach is on readability of the recommendation from human's perspective, so the authors set up a very big evaluation framework composed by 47 SDK classes ads dataset, the eXaDOC tool as concurrent approach and over 150 people as tester. The threats rise up from this evaluation are related to the validity of dataset (it may be not indicative and it doesn't represent all possible situation) and the background of the developers chosen for the evaluation (not expert in the field). However, this approach is useful to understand the concept of readability in the API recommendation domain.
 
-\section{APIMiner -- Mining patterns for Android  API}
-In  ~\cite{borges_mining_2015}, the authors extend APIMiner tool with API pattern considering Android projects from Github as dataset. In particular, they develop a module that perform the recommendation based on mining. The original API miner tool~\cite{montandon_documenting_2013}  retrieves information about the documented API method in the Android interface similar to JavaDoc view. This kind of recommendation coming from  concrete source code extracted from private repositories. The overall  architecture is composed by the source repositories, a pre-processing module based on slicing algorithm, the ranker module that classifies the summarized methods  considering all the lines of  code (source code metric), the number of commits in the original repositories (called process metric) and the number of download (called usage metric). \\
+In~\cite{buse_synthesizing_2012} authors propose an approach to produce 
+automatically documentation for the project at hand in a human readable format.
+After a mining phase of the considered source code, the proposed algorithm 
+extract API patterns and rearrange them in a more readable and effectiveness 
+format. The focus is on Java documentation that provides useful hints and 
+suggestions when a developer is implementing an API functionality. Although in 
+general the Java doc helps in this kind of activity, it often lacks in 
+something, as the examples are too general or it is not able to give a concrete 
+hint for the problem that the developer is trying to solve. So, the aim of the 
+approach is to produce an enhanced version of the documentation that is really 
+useful for the developers, by starting from retrieving API patterns, defined as 
+the sequence of function call for a certain API class, called target class. 
+Once this first step is done, the algorithm tries to produce a human-written 
+documentation for the API, taking into account some characteristics such as the 
+lines of code, that are 11 on average but 5 for the median. Moreover, the 
+authors consider also the abstract initialization, abstract usage and exception 
+handling. All this information is extracted using JDK utilities and they are 
+validated by the authors, by putting more effort on the human aspect. 
+
+To validate the results, authors involve over 150 developers and collect their 
+answers about the proposed results. By analyzing these statistics, a typical 
+developer wants multiple uses for a certain class or API method and not only 
+one, that may be not useful for his particular context. Another key point is 
+the conciseness of the suggested snippet of codes, as well as the readability 
+and variables names that must be related to the context, also including 
+temporary ones to improve the readability. So, from this survey, we can 
+identify four key points to achieve the human-written documentation: size of 
+the code, readability, representativeness and concreteness. 
+To reach these goals, the approach proposed in ~\cite{buse_synthesizing_2012} 
+consists of four main steps: the path enumeration, predicate generation, 
+clustering and finally the output documentation. Starting from the path 
+identification, they scan the code and identify acyclic part of the code that 
+represent a path for the target class. Notice that this approach can led some 
+bias but it happens in practice and the authors choose to stay close with 
+respect to real implementation. As in the case of the the previous approaches, 
+they parse the code and create clusters of the significant results with a 
+distance matrix in order to build the related documentation. As the purpose is 
+different from previous works, they are adding some clustering also on 
+predicate and represent the abstract pattern as a graph. Then they compute 
+symbolic execution over these paths in order to produce inter-procedural path 
+predicates that are logical formulas used to represent the code and in 
+particular, if a certain statement is reachable or not. From this abstraction, 
+the algorithm computes user seeds that are local instantiations of fields, 
+objects and whatever is related to the target class. Finally, from these it 
+produces concrete uses, the real hints about the target class, that are stored 
+in graph form in which edges keep trace about what happens before and so, in 
+this way, we have the context as well as the chain of methods necessary to 
+implements the features related to the target class. 
+
+To have better results, however, it is not enough to produce usage examples, as 
+we seen so far with the other related works. Clustering is necessary to avoid 
+heavy computations, and the proposed algorithm exploits the well-known 
+k-medoids algorithm with some modifications, as the original algorithm is not 
+suitable to detect distance about objects. The distance matrix that is taking 
+into account by the k-medoids algorithm is based on the happens before relation 
+obtained from the graph. So, at the end of this computation, the algorithm 
+obtains the cluster and summarize them into abstract uses, represented once 
+again in graph form. 
+
+The final step of the proposed algorithm is to produce the documentation. 
+Starting from the abstract uses, it uses a topological approach to avoid the 
+cycle and branches that appear in the code, as the final recommended 
+documentation about the target class must be a flat file. Using this approach, 
+the authors are able to retrieve a Java documentation related to the target 
+class and respect also the Java syntax, so they avoid malformed documentation. 
+Moreover, with this approach, the algorithm handles the exception treatment 
+with try catch clauses, that are put always in the correct order. As said 
+before, the focus of this approach is on readability of the recommendation from 
+a human perspective, so the authors set up a very big evaluation framework 
+composed by 47 SDK classes ads dataset, the eXaDOC tool as concurrent approach 
+and over 150 people as tester. The threats rise up from this evaluation are 
+related to the validity of dataset (it may be not indicative and it doesn't 
+represent all possible situation) and the background of the developers chosen 
+for the evaluation (not expert in the field). However, this approach is useful 
+to understand the concept of readability in the API recommendation domain.
+
+\section{APIMiner -- Mining patterns for Android API}
+
+In~\cite{borges_mining_2015} the authors extend APIMiner tool with API pattern 
+considering Android projects from Github as dataset. In particular, they 
+develop a module that perform the recommendation based on mining. The original 
+API miner tool~\cite{montandon_documenting_2013}  retrieves information about 
+the documented API method in the Android interface similar to JavaDoc view. 
+This kind of recommendation coming from  concrete source code extracted from 
+private repositories. The overall  architecture is composed by the source 
+repositories, a pre-processing module based on slicing algorithm, the ranker 
+module that classifies the summarized methods  considering all the lines of  
+code (source code metric), the number of commits in the original repositories 
+(called process metric) and the number of download (called usage metric). \\
 Moreover, the authors use also Java Weaver, a tool that builds and retrieves automatically the Java documentation related to the extracted methods calls. About the slicing algorithm, that represent the core of the system, it works as follows: first, it takes as inputs the API method call that the developer wants to analyze and all the body statement in which this method was found. Of course, this kind of analysis is performed off-line to avoid loss of time. At each iteration, the algorithm looks for similarity by analysing the list of variables present in the body statement of each method. If it founds some similarities, it put the method in a list that represent the final recommendation, as in this list there are the most relevant methods. The slicing is performed both backward and forward; the first looks the writing variables while the second analyze the the reading ones. The dataset is composed only by Android projects because this system provides an API to validate APIMiner approach. All the projects are under open source license and are compilable, otherwise the slicing algorithm doesn't work (it visits the AST to retrieve information about method calls). \\
 Concerning instead the extension mentioned before, the authors perform the API extraction by considering FP-Growth association as main index of similarity and run it using Weka tool that consider also the relation between two API call, defined as sequence of methods that implements specific functions. This approach relies completely on Weka implementation. During the mining, the tool discharges the call with single call because is not relevant. The results are evaluated by define two main metrics: support, defined as the number of patterns that include the method, and confidence, the probability of the method in the antecedent transaction. The final recommendation is displayed in the JavaDoc window in Eclipse and Android Studio, although the results is related to Android API functions. With respect to original APIMiner work, the authors also extend the graphic interface in which the recommendations are showed; in particular, the tool shows the complete chain of method calls related to the client method. An important drawback of this approach is that it works only for Android projects and it is no tested at the moment for other kind of APIs.
 
