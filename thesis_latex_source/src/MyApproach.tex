@@ -1,7 +1,24 @@
 
+
+
 \section{Overview}
+
+In this chapter, we present our proposed approach to API function call recommendation.
+
 After the problem statement and an brief description of Simian tool, we go to describe our approach to solve the problem of API function call recommendations. This approach, described in Figure 5, exploits the CLAMS work, in particular the patterns extracted as output, plus the code cloning features provided by Simian. So, at the beginning of the process and after a preprocessing phase, we have the patterns files and the developer's file, represented by a single string. Notice that with this way we keep trace on the context in which the user is developing. Then, all these files is used to extract the recommendations in form of patterns by using Simian integrated in Eclipse platform, following the options specified in next sections. \\
 Basically, at the end of this phase, Simian retrieves the cloned clone between the developer's file and the CLAMS patterns related to the library that the user is implemented. By using these file, the tool performs recommendations by remove the cloned part and suggest to the user the new lines of code that represent the missing pattern for the user. In next sections, we going in deep to describe the entire system and how the integration of Simian and CLAMS works in practise. 
+
+
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.80\textwidth]{images/APIUsagePatternSimianCLAM.pdf}
+	%	\vspace{-.5cm}
+	\caption{API usage patterns recommendation using a combination of CLAMS and Simian}	
+	\label{fig:APIUsagePatternSimianCLAM}	
+\end{figure}
+
+
 
 
 \begin{figure}[!h]
@@ -24,38 +41,22 @@ Once we define the input, there is another step in order to use Simian to do API
 In order to integrate Simian in an Eclipse project, we have to set the following main classes: 
 
 \begin{table}[!h]
-
-  \caption{ Overview about Simian classes }
-  \label{Table:4}
-\begin{adjustbox}{width=1\textwidth}
-
-\begin{tabular}{|c|l|}
-
-\hline
- \textbf{Simian class} & \textbf{Description} \\
-\hline
- Auditstener & \vtop{\hbox{\strut This class is necessary to initialise Simian tool  } \hbox{\strut  and collect all notification from events that occur}} \\
-\hline
-Block & \vtop{\hbox{\strut This class represents the duplicated block of code as an object }\hbox{\strut and we can interact using method utilities}} \\
-\hline
-FileLoader &  \vtop{\hbox{\strut It is used to load all files}\hbox{\strut  for the comparison, with the method load}} \\
-\hline
-Checker &  \vtop{\hbox{\strut This class is used to perform the real comparison}\hbox{\strut  by calling the method check() on preloaded files}} \\
-\hline
-StreamLoader &  \vtop{\hbox{\strut Once we load files and create the Checker,}\hbox{\strut  this class load them into the Checker}} \\
-\hline
-Options &  \vtop{\hbox{\strut A data structure that encapsulates}\hbox{\strut  all options enabled for the comparison}} \\
-\hline
-Option &  \vtop{\hbox{\strut This class represents a single option}\hbox{\strut  and we can specify it by accessing to a static field}} \\
-\hline
-Language &  \vtop{\hbox{\strut This class contains static fields}\hbox{\strut  to set all supported languages as type of input files}} \\
-\hline
-CheckSummary &  \vtop{\hbox{\strut It contains all statistical data such as cloned code,}\hbox{\strut  number of total files, requested time and duplicated files }} \\
-\hline
+	\begin{tabular}{|p{3.0cm}|p{10.4cm}|}\hline
+	\textbf{Simian class} & \textbf{Description} \\\hline
+	Auditstener &  This class is necessary to initialise Simian tool  and collect all notification from events that occur \\\hline
+	Block &  This class represents the duplicated block of code as an object  and we can interact using method utilities \\\hline
+	FileLoader &   It is used to load all files  for the comparison, with the method load \\ \hline
+	Checker &   This class is used to perform the real comparison  by calling the method check() on preloaded files \\\hline
+	StreamLoader &   Once we load files and create the Checker,  this class load them into the Checker \\\hline
+	Options &   A data structure that encapsulates  all options enabled for the comparison \\\hline
+	Option &   This class represents a single option  and we can specify it by accessing to a static field \\\hline
+	Language &   This class contains static fields  to set all supported languages as type of input files \\\hline
+	CheckSummary &   It contains all statistical data such as cloned code,  number of total files, requested time and duplicated files \\\hline
 \end{tabular}
-
-\end{adjustbox}
+\caption{ Overview about Simian classes }\label{Table:4}
 \end{table} 
+
+
 The project has the following structure, divided in subpackages:
 \begin{itemize}
 \item business: it contains all the interfaces that expose the utility functions;
@@ -110,6 +111,7 @@ At the end of this step, we have the patterns (a complete one or only partial) t
 
 In the example below, related to MQTT paho library, we have extracted the method publish() from the developer's file with Java Parser and run Simian on it.  The last columns shows two top rank CLAMS patterns related to it.
 \vspace{5mm}
+
 
 Developer's original file
 \begin{lstlisting}
@@ -182,8 +184,10 @@ public class Sample implements MqttCallback {
 \end{lstlisting}
 
 
-\vspace{5mm}
-\newpage
+
+%\vspace{5mm}
+%\newpage
+
 Extracted method:
 \begin{lstlisting}
 
@@ -206,10 +210,10 @@ Extracted method:
  \end{lstlisting}
 
 \noindent
+
 \begin{minipage}[t]{0.4\textwidth}
 \begin{lstlisting}
 CLAMS pattern #1
-
 {
     String pubTopic;
     MqttClient pubClinet;
@@ -225,11 +229,10 @@ CLAMS pattern #1
 \end{lstlisting}
 \end{minipage}
 \hfill
-\begin{minipage}[t]{0.5\textwidth}
 
+\begin{minipage}[t]{0.5\textwidth}
 \begin{lstlisting}
 CLAMS pattern #2
-
 {
     String topicName;
     MqttAsyncClient client;
@@ -247,10 +250,11 @@ CLAMS pattern #2
     discToken.waitForCompletion();
 }
 
-	
 \end{lstlisting}
 \end{minipage}
-\newline
+
+%\newline
+
 In particular, the two extracted recommendations show two possible use of the object MqttMessage that the developer declare in the publish method. The first recommendation add an MqttClient while the second use the interface IMqttDeliveryToken as a different way to send the mqtt message. Of course, the number of recommendation is strongly related to the length of the method and how many lines Simian can detect in its textual analysis. This example is just to show the expected output after running our approach. In general, given a project that uses different libraries, with this approach we are able to recommend patterns of whatever libraries that the user are interested to develop. As mentioned before, recommendations are at level of code snippet, that provide a concrete and immediate hint. As we choose CLAMS for the second element of the clone pair, we are not able to provide tutorial or complete application as recommendation, because only the patterns are available for this purpose. \\
 We can support almost the dataset of CLAMS, because the authors provides all necessary files on Github to have the patterns, but we can support also different libraries like MQTT or Json. Notice that quality of recommendations depends first of all on the blocks in the developer's file that Simian is able to detect in the patterns provided by CLAMS. More patterns means more support for the library and this bring more API recommendations at the end of the process. An other aspect to taking into account is that Simian analyse the duplicated blocks of code and maybe some methods invocations that are not in the correct sequence are discarded automatically from the final recommendation. \\
 In next section we set up an evaluation framework  by using part of the dataset of CLAMS (as we have already the patterns used by Simian for the comparison). We do this as a double check validation because Simian not have a postprocessing phase as we said in the related section and we need a comparison that goes beyond the lexical one in order to apply the metrics. Moreover, we will compare the Simian results with PAM, already described in the existing approach section.
