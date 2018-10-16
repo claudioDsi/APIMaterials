@@ -865,30 +865,163 @@ ranked recommendation related to the developer's features.
 %files to the golden set.
 
 
-\section{CodeBroker -- API recommendation 
-with reuse conducive development 
+\section{CodeBroker -- API recommendation with reuse conducive development 
 environment}
 
-Now we analyze CodeBroker tool, proposed in~\cite{ye_reuse-conducive_2005} that use information retrieval techniques in order to make recommendations. The authors consider a lot of techniques for their tool, such as information delivery, retrieval by reformulation, knowledge augmentation and finding task with similarity metric. All these definitions compose the conceptual framework that is a baseline for the implementation and evaluation of the CodeBroker tool. It is a interface agent with back-end utilities that takes a query as input and return the component related to it. Notice that this recommendation is based on Javadoc generate from Java source files. \\
-The tool is based on two communication channels with the developer that is interested in API recommendation: one is an implicit where the system autonomously retrieve methods information and details from a given query. In this case it shows information organized in three layers, namely task relevance, signature details and full JavaDoc. Regarding the second channel, it is explicit because the developer can refine the query based on its current needs and the system can adapt itself to this new situation and this technique is called retrieval by reformulation. Furthermore, CodeBroker creates a discourse model to represent the projects and an user one to represent in some way the software knowledge and personal information regarding used method in the project. It uses LSA as similarity techniques to do comparison and Java core libraries as dataset to test the tool. About the implicit communication, this term describes a set of information that can be inferred by the system without taking in account the user's hints; for the explicit channel communication, instead, the tool considers the user's need by looking its model plus the discourse one mentioned before.\newline
-As first step, CodeBroker arrange the query taking into account the context of the developer, called constrain part, the program that is the concept of functionality and the code that is the embodiment of it. So, for the similarity analysis, the authors consider the context and so the conceptual similarity and also the constrain similarity, that involved between two different signatures of the methods. About this last concept, they reuse it to apply the Latent similarity analysis (LSA) as main technique to perform comparison between two different API methods. Going in deep, the tool performs the so called signature matching that outlines the similarity of two components based on their signature structure. Although this comparison should be not representative enough, the authors claim that is suitable for their purpose: so, the value of the comparison is in the range from 0.0 to 1.0, that represent the exactly match between two different method. However, this first analysis must be enhanced by retrieval by reformulation technique as the LSA cannot analysis in deep fragment with comments or task relevant information from the code. So, as mentioned before, the authors use explicit communication channel to allow the developer to formulate once again the initial query: the typical use case is that a user want to improve the initial query with other components and so he change the query in order to retrieve more information or very different components with respect to the initial one. It is true especially for the Github repository, that have very complex structure inside them and may a no expert developer want to know all these details. \\
-At this point, we can introduce the concept of module, namely the part of the code that implements the developer's main feature. This kind of activity is performed by building the discourse model of the developer, that represent the sequence of tasks necessary to implement the all features and it is used to improve the final components recommendation. At the beginning, this model is empty as the developer is starting to develop and he doesn't know at the beginning what are the components that are useful for his task. During the query phase, this model is filled with respect to the developer's choice and all this information are retrieve on the RCI console used for the final recommendation. There is another model that CodeBroker takes into account during its analysis: the user model, that represent the developer's knowledge in abstract form. \\
-Based on this definition, it is very different with respect to the discourse model and it is partially filled based on the developer skills. This model is used to remove possible components that the user already known and so to avoid the redundancy problem. The authors define the knowledge as the number of implemented class by the developer and, in general, it is different from user to another. The final recommendations is performed through RCI-display already mentioned, with three layers: the first one shows the components related to the query, the second is linked to mouse movement (it displays signature information about the retrieved components) and, finally, a completed description in HTML external page, included the JavaDoc, belongs to the third layer recommendation. For the evaluation task, the authors use Java 1.1.8 core libraries and JGL library, with 663 classes and about 7000 methods to analyze. 
+In~\cite{ye_reuse-conducive_2005} authors propose the CodeBroker tool, which 
+makes use of information retrieval techniques to make recommendations, which 
+are based on Javadoc generated from Java source files. The tool is based on two 
+communication channels with the developer that is interested in API 
+recommendation: one is implicit since the system autonomously retrieves methods 
+information and details from a given query. In this case it shows information 
+organized in three layers, namely task relevance, signature details, and full 
+JavaDoc. Regarding the second channel, it is explicit because the developer can 
+refine the query based on its current needs and the system can adapt itself to 
+this new situation and this technique is called retrieval by reformulation. 
+Furthermore, CodeBroker creates a discourse model to represent the projects and 
+the user. It uses LSA as similarity techniques to do the comparison and Java 
+core libraries as dataset to test the tool. About the implicit communication, 
+this term describes a set of information that can be inferred by the system 
+without taking in account the user's hints; for the explicit channel 
+communication, instead, the tool considers the user's need by looking its model 
+plus the discourse one previously mentioned.
 
-\section{Usetec -- Mining API usage example 
-from the test code}
-Until now, we have looked at the problem of API considering the code examples coming from the source code or from the Internet, mainly Github projects. However, in this way, the approaches don't cover the more recent and newer API available that often lack of support and the proper documentation. In~\cite{zhu_mining_2014}, the authors develop an Eclipse plugin called Usetc to cover this kind of APIs and gives useful recommendations to cover this field. To do this, they use as baseline for the code example the testing code coming from JUnit, that fine-grained, executable and cover the newest APIs, focusing on the designed functionalities of the APIs. The core of the approach is based on heuristic slicing on the test units that are split in different test scenarios and, from them, Usetec extracts the code examples that represent the recommendations. \\
-The main issue of using testing code is to separate the different test scenarios into different parts, in order to have recommendation for the right context. In the literature there aren't approaches that perform this kind of separation, so the authors are forced to implement a new approach, based on code pattern that represent different kind of methods in the JUnit code. They represent five categories of code patterns: the first one contains only assertion methods, used into result verification phase, represented by regular expression to summarize the content. The second code pattern type is composed by assertion and non assertion methods, such as data declaration and re-initialization of variables. In this scenario, it is necessary to distinguish the assertion methods from the non assertion ones. In the third scenario, we have at least a method invocation of the API that is under testing. In this case, it is not enough to simply slice the sequence because the authors want to extract the data-relevant statement for the recommendations. So, they used the proposed heuristic slicing algorithm to achieve their aim. These extracted statements, combined with the relevant statement of the second scenario, form a complete scenario. Finally, in the last scenario, Usetec analyzes the unit test that includes sub sequence of method invocations. To do this, the authors use the already mentioned LCS techniques in order to complete the scenario and give a more accurate recommendations. \newline
-Once they define this slicing techniques, they can describe how the Usetec tool works. First of all, it retrieves the testing method invocations using name convention techniques, that is based on similarities among testing classes of JUnit. It is a most common and effective techniques to extract the unit test for the APIs. Then, using the code patterns described above (in the following order: pattern 1, pattern 2, pattern 3 and 4), the tool is able to extract the code example from test methods. The last step is the clusterization of the results, in order to have the most representative code example. For this purpose, Usetec use the LCS similarities and the harmonic mean to identify a cluster. The final recommendations are of two kind: it provides automatically the JavaDoc together with the usage example plus a GUI plugin for Eclipse, that are more intuitive. As dataset, the author choose four open source Java projects(Commons-Lang,Commons-Maths, JfreeCharts, Apache POI) that belong to different domains to increase the coverage of the Usetec results. \\
-The evaluation involves about 200 extracted methods for each project and they select manually a golden set to do the comparison. Moreover, they involves human evaluators that have experience with Java. Usetec is compared with eXoaDoc tool on the minimum edit distance. The Usetec approach is more faster but some errors could be arise if we change the golden set or if some faults come from to the code implementation, as claimed by the authors. 
+As first step, CodeBroker arranges the query by taking into account the context 
+of the developer, called constrain part, the program that is the concept of 
+functionality, and the code that is the embodiment of it. So, for the 
+similarity analysis, the authors consider the context, the conceptual 
+similarity, and the constrain similarity, that involved between two different 
+signatures of the methods. About this last concept, they reuse it to apply the 
+Latent similarity analysis (LSA) as main technique to perform comparison 
+between two different API methods. Going in deep, the tool performs the so 
+called signature matching that outlines the similarity of two components based 
+on their signature structure. Although this comparison should be not 
+representative enough, the authors claim that is suitable for their purpose: 
+so, the value of the comparison is in the range [0.0,1.0], that represents the 
+match between two different methods. However, this first analysis is enhanced 
+by taking into account the explicit communication channel to allow the 
+developer to refine the initial query: the typical use case is that a user 
+wants to improve the initial query with other components and so she changes the 
+query in order to retrieve more information or very different components with 
+respect to the initial one. 
 
-\section{PAM -- Parameter-free 
-probabilistic API mining}
-Finally, we look at the~\cite{fowkes_parameter-free_2016} that propose an approach similar to the others, but with the aim to reduce the redundancy of the mined patterns. The proposed tool, called PAM, is based on probabilistic techniques and wants to cover not the most common pattern but the most significant, which are also the most difficult to retrieve. To do this, the authors avoid the n-gram technique that we saw previously and use the generation of a sequence by interleaving a group of sequences. A very important issue is the threshold, because if it is too low there are a lot of results but if it is too high there is no useful results. The core of the approach is represented by mining sequence of patterns from a given project. \\
-This feature is realized by applying a best-effort approach to extract the pattern directly from the source code. It follows the same approach show in MAPO by visiting the AST but it not consider conditional statement such as if else structure. At the end of this process, the authors retrieve the list of API call in form of method invocation considering their qualified name. Notice that PAM represents an improvement of the original MAPO approach because it is able to dynamically inferred the call sequence. When this extraction phase is finished, we look at the probabilistic model used by the authors for retrieve the most probable and useful API call in form of patterns. \\
-The model is based on a generative algorithm that takes as input the API call patterns and generates the interesting patterns for each of them. For interesting, the authors mean pattern that introduce some kind of novelty in the considered original patterns. The probability distribution applied at this point is explicitly defined by the probability to extract a certain pattern considering the sequence until now. However, to extract the more interesting patterns from the original patterns, the generative algorithm is not enough and the authors introduce the inference. Normally, the introduction of the inference lead to NP-hard problem but the authors use in this case a greedy algorithm that approximates the problem using conditional probability. This algorithm maximize at each step the probability to choose more interesting patterns starting from the original sequence by using a parameter. \newline
-All this concept are used in the main algorithm used by PAM, called structured EM algorithm. This algorithm requires some form of training data, represented by client methods and the associated probability to determinates the more interesting related API patterns. All steps are independent so the EM algorithm calls the previous algorithms in a parallel way. At the end, the authors have as results the list of the API most significant patterns with the associated probability. \\
-The dataset used is the same of CLAMS paper. PAM is implemented as Maven project available on Github. As input, it takes a file in ARFF format (the same format used also in CLAMS) that represent the client API methods. We can parametrize the execution with different ARFF, by setting the maximum number of iteration or structured steps. Here below there is an example output of PAM: it produces a ranked list of invocation depending on their probabilities. 
+A previously mentioned, the approach introduces the notion of discourse model 
+of the developer that represents the sequence of tasks necessary to implement 
+the wanted features and it is used to improve the final components 
+recommendation. At the beginning, this model is empty as the developer is 
+starting to develop and she doesn't know at the beginning what are the 
+components that are useful for the task. During the query phase, this model is 
+filled with respect to the developer's choices. There is another model that 
+CodeBroker takes into account during its analysis: the user model, that 
+represent the developer's knowledge in abstract form. It is very different with 
+respect to the discourse model and it is partially filled based on the 
+developer skills. This model is used to remove possible components that the 
+user already knows and so to avoid the redundancy problem. The authors define 
+the knowledge as the number of implemented class by the developer and, in 
+general, it is different from one user to another. The final recommendation is 
+performed in terms of three layers: the first one shows the components related 
+to the query, the second is linked to mouse movement (it displays signature 
+information about the retrieved components) and, finally, a completed 
+description in a HTML external page, included the JavaDoc. For the evaluation 
+task, the authors used Java 1.1.8 core libraries and JGL library, with 663 
+classes and about 7,000 methods to analyze. 
+
+\section{Usetec -- Mining API usage example from the test code}
+
+In~\cite{zhu_mining_2014} authors propose an Eclipse plugin to cover the most 
+recent and new APIs that typically lack documentation. To this end, the 
+approach considers as baseline testing code developed in JUnit.
+%, that fine-grained, executable and cover the newest APIs, focusing on the 
+%designed functionalities of the APIs. 
+The core aspect of the approach is based on heuristic slicing on the test units 
+that are split in different test scenarios and, from them, Usetec extracts the 
+code examples that represent the recommendations. The main issue of using 
+testing code is to separate the different test scenarios into different parts, 
+in order to have recommendation for the right context. In the literature there 
+are no approaches that perform this kind of separation, so the authors are 
+forced to implement a new approach, based on code patterns that represent 
+different kinds of methods in the JUnit code. They represent five categories of 
+code patterns: the first one contains only assertion methods, which are used 
+into result verification phase, and represented by regular expression to 
+summarize the content. The second code pattern type is composed of assertion 
+and non assertion methods, such as data declaration and re-initialization of 
+variables. In the third scenario, we have at least a method invocation of the 
+API that is under testing. In this case, it is not enough to simply slice the 
+sequence because the authors want to extract the data-relevant statement for 
+the recommendations. So, they used the proposed heuristic slicing algorithm to 
+achieve their aim. These extracted statements, combined with the relevant 
+statements of the second scenario, form a complete scenario. Finally, in the 
+last scenario, Usetec analyzes the unit test that includes sub sequences of 
+method invocations. To do this, the authors use the already mentioned LCS 
+techniques in order to complete the scenario and give a more accurate 
+recommendations. 
+
+The Usetec supporting tool retrieves the testing method invocations using name 
+convention techniques, that is based on similarities among testing classes of 
+JUnit.  Then, by using the code patterns described above (in the following 
+order: pattern 1, pattern 2, pattern 3 and 4), the tool is able to extract the 
+code examples from the test methods. The last step is the clusterization of the 
+results, in order to have the most representative code examples. For this 
+purpose, Usetec uses the LCS similarities and the harmonic mean to identify a 
+cluster. The final recommendations consist of automatically retrieved JavaDoc 
+together with the usage examples shown in a GUI in Eclipse. 
+%As dataset, the author choose four open source Java 
+%projects(Commons-Lang,Commons-Maths, JfreeCharts, Apache POI) that belong to 
+%different domains to increase the coverage of the Usetec results. \\
+
+The evaluation of the approach involved about 200 extracted methods for each 
+project and they selected manually a golden set to do the comparison. Moreover, 
+they involved human evaluators that had experience with Java. Usetec is 
+compared with eXoaDoc tool on the minimum edit distance. 
+%The Usetec approach is more faster but some errors could arise if we change 
+%the golden set or if some faults come from to the code implementation, as 
+%claimed by the authors. 
+
+\section{PAM -- Parameter-free probabilistic API mining}
+In~\cite{fowkes_parameter-free_2016} authors presents the PAM approach, which 
+is able to extract patterns directly from the source code of a given project.
+%
+%that propose an approach similar to the others, but with the aim to reduce the 
+%redundancy of the mined patterns. The proposed tool, called PAM, is based on 
+%probabilistic techniques and wants to cover not the most common pattern but 
+%the 
+%most significant, which are also the most difficult to retrieve. To do this, 
+%the authors avoid the n-gram technique that we saw previously and use the 
+%generation of a sequence by interleaving a group of sequences. A very 
+%important 
+%issue is the threshold, because if it is too low there are a lot of results 
+%but 
+%if it is too high there is no useful results. The core of the approach is 
+%represented by mining sequence of patterns from a given project. \\
+%This feature is realized by applying a best-effort approach to extract the 
+%pattern directly from the source code. 
+%
+It follows the same technique shown in MAPO by visiting the AST but it does not 
+consider conditional statements such as if else structures. At the end of this 
+process, the approach retrieves the list of API calls in the form of method 
+invocations by considering their qualified name. Notice that PAM represents an 
+improvement of the original MAPO approach because it is able to dynamically 
+infer the call sequences. When this extraction phase is finished, the 
+probabilistic model if considered to retrieve the most probable and useful API 
+calls in the form of patterns. The model is based on a generative algorithm 
+that takes as input the API call patterns and generates the interesting 
+patterns for each of them. To this end a greedy algorithm is also used to 
+maximize at each step the probability to choose more interesting patterns 
+starting from the original sequence. All these concepts are used in the main 
+algorithm used by PAM, called structured EM algorithm. This algorithm requires 
+some form of training data, represented by client methods and the associated 
+probability to determinates the more interesting related API patterns. All the 
+steps are independent so the EM algorithm calls the previous algorithms in a 
+parallel way. At the end, the authors have as results the list of the most API 
+significant patterns with the associated probability. 
+
+The dataset used by PAM is the same of CLAMS. PAM is implemented as a Maven 
+project available on Github. As input, it takes a file in ARFF format (the same 
+format used also in CLAMS) that represents the client API methods. We can 
+parametrize the execution with different ARFF files, by setting the maximum 
+number of iterations or structured steps. Here below there is an example output 
+of PAM and it consists of a ranked list of invocations depending on their 
+probability to occur. 
 
 \begin{lstlisting}
 prob: 0,02059
@@ -940,57 +1073,88 @@ prob: 0,00544
 
 
 \section{Summary}
-Table 1 gives a summary of approaches showed until now. As all the approaches share almost the same baseline, we described in the table the following feature:
+Table \ref{tab:apiMiningApproaches} shows an overview of the approach 
+previously summarized. They are classified according to the following features:
 \begin{itemize}
-\item Proposed tool: it represents the proposed too, in form of algorithm, plugin or platform;
-\item Parser for code or AST: it specifies what are the techniques adopted for parsing the source files or AST;
-\item Similarity: this parameter indicates what degree of similarities and what are the algorithms involved in this phase;
-\item Clustering: it describes the clustering techniques used in each approach, used for summarized big data;
-\item Supported languages: this feature specify the dataset used for the validation and for presents the final results for each tool;
-\item Provided recommendations: it describes the form of final recommendations and specify what are their characteristics (if they are snippet of code, documentation enhancement or visual hints. 
+
+	\item \textit{Used parser}: it specifies what are the techniques adopted 
+	for parsing the source files or AST;
+	\item \textit{Similarity}: this parameter indicates the degree of 
+	similarities and what are the algorithms involved in this phase;
+	\item \textit{Clustering}: it refers to the employed clustering techniques;
+	\item \textit{Supported language/platform}: this feature specifies the 
+	language and/or the platform that has been used to validate the considered 
+	approach;
+	\item \textit{Produced recommendations}: it refers to the kind of 
+	recommendations the considered approach is able to produce.
 
 \end{itemize} 
 
-\begin{center}
-\begin{table}[!h]
-  \caption{ Summary of relevant paper }
-  \label{Table:1}
-\begin{adjustbox}{width=1\textwidth}
 
+\begin{table}[t!]
+		\begin{adjustbox}{width=1\textwidth}		
+			  \begin{tabular}{|p{2.5cm}|p{3cm}|p{3cm}|p{4cm}|p{2cm}|p{4cm}|}
+				\hline
+				\textbf{Approach Name} & \textbf{Used parser}
+				& 
+				\textbf{Similarity} & \textbf{Clustering} & \textbf{Supported 
+				language/platform} 
+				& \textbf{Provided recommendations} \\
+				\hline
+				MAPO  &  JDT & API call sequence & Data-driven & Java &  API 
+				usage patterns  
+				\\
+				\hline
+				UP-Miner & Roselyn AST parser & SeqSim technique&  BIDE 
+				algorithm & 
+				C\#  &   Probabilistic graph of APIs \\
+				\hline
+				CLAMS & JDT parser & Distance matrix &  LCS,HDBSCAN  & Java &  
+				API usage patterns  \\
+				\hline
+				APIRec  & GumTree AST parser &  Association-based model &  
+				inference 
+				mode &  Java & Most frequent API calls \\
+				\hline
+				Buse-Weimer algo &  Symbolic execution for  path enumeration &  
+				Distance matrix & K-medoids algorithm & Java  & Human readable 
+				documentation \\
+				\hline 	
+				APIMiner  & Slicing algorithm & Structural similarity of APIs & 
+				FP-growth with WEKA tool & Android  & Documentation 
+				enhancement\\
+				\hline
+				API patterns with object usages & Extract object usage & 
+				Co-existence 
+				relation &  Modularity index and Gamma index & Android & API 
+				usage patterns \\
+				\hline
+				JIRA platform & JDT &Cosine similarity &  Integrator component 
+				& 
+				Java & 
+				Top ranked methods \\
+				\hline
+				CodeBroker & Back-end search engine & LCS &  Discourse and user 
+				model & 
+				Java  &  Relevant tasks, signature and JavaDoc  \\
+				\hline
+				Usetec & JUnit & heuristic slicing algorithm & LCS technique  & 
+				Java &  
+				API method invocations  \\
+				\hline
+				PAM & JDT & Structured EM algorithm & Probabilistic model & 
+				Java  
+				&  
+				Ranked list of method invocations \\
+				\hline
 	
-  \begin{tabular}{|p{2.5cm}|p{3cm}|p{3cm}|p{4cm}|p{2cm}|p{4cm}|}
-\hline
+			\end{tabular}
+		\end{adjustbox}
+		\caption{Summary of the considered API mining techniques}
+		\label{tab:apiMiningApproaches}
 
-\textbf{Proposed approach} & \textbf{Parser for AST or code} & \textbf{Similarity} & \textbf{Clustering} & \textbf{Supported Language} & \textbf{Provided recommendations} \\
-\hline
-MAPO  &  JDT & API call sequence & Data-driven & Java &  API patterns  \\
-\hline
-UP-Miner & Roselyn AST parser & SeqSim technique&  BIDE algorithm & C\#  &   Probabilistic graph of API \\
-\hline
-CLAMS & JDT parser & Distance matrix &  LCS,HDBSCAN  & Java &  Patterns for API \\
-\hline
-APIRec  & GumTree AST parser &  Association-based model &  inference mode &  Java & Most frequent API call \\
-\hline
-Buse-Weimer algo &  Symbolic execution for  path enumeration &  Distance matrix & K-medoids algorithm & Java  & Human readable documentation \\
-\hline 	
-APIMiner  & slicing algorithm & Structural similarity of APIs & FP-growth with WEKA tool & Android  & Enhance documentation \\
-\hline
-API patterns with object usages & Extract object usage & Co-existence relation &  Modularity index and Gamma index & Android & API usage pattern\\
-\hline
-JIRA platform & JDT &Cosine similarity &  Integrator component & Java & Top ranked methods \\
-\hline
-CodeBroker & Back-end search engine & LCS &  Discourse and user model & Java  &  Relevant tasks, signature and JavaDoc  \\
-\hline
-Usetec & JUnit & heuristic slicing algorithm & LCS technique  & Java &  API method invocations  \\
-\hline
-PAM & JDT & Structured EM algorithm & Probabilistic model & Java  &  Ranked list of method invocations \\
-\hline
-
-\end{tabular}
-
-\end{adjustbox}
 \end{table} 
-\end{center}
+
 
 
 
